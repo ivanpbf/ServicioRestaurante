@@ -7,7 +7,7 @@ package serviciorestaurante;
 
 /**
  *
- * @author Ivan
+ *aqui ponemos nuestros nombres
  */
 public class Servicio extends javax.swing.JFrame {
 
