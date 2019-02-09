@@ -5,10 +5,29 @@
  */
 package serviciorestaurante;
 
+import java.util.concurrent.Semaphore;
+
 /**
  *
  * @author Ivan
  */
 public class CPostre extends Cocinero{
+    private int mesonPostre[];
+    private boolean ejecutar = true;
+    private boolean pausar = false;
+
+    public CPostre(int mesonPostre[], Semaphore SE, Semaphore SP, Semaphore SC, double tiempo, int entra, int sale, Servicio interfaz) {
+        super(SE, SP, SC, tiempo, entra, sale, interfaz);
+        this.mesonPostre = mesonPostre;
+    }
     
+    
+
+    public int[] getMesonPostre() {
+        return mesonPostre;
+    }
+
+    public void setMesonPostre(int[] mesonPostre) {
+        this.mesonPostre = mesonPostre;
+    }
 }
