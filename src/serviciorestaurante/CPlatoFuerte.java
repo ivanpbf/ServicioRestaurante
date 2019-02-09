@@ -6,6 +6,8 @@
 package serviciorestaurante;
 
 import java.util.concurrent.Semaphore;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -21,6 +23,31 @@ public class CPlatoFuerte extends Cocinero{
         this.mesonPlatoFuerte = mesonPlatoFuerte;
     }
     
+    @Override
+    public void run() {
+        while(ejecutar){
+            try {
+                SP.acquire(1);
+                SE.acquire(1);
+                cocinar();
+                SE.release();
+                SC.release();
+                CPlatoFuerte.sleep((long)(1000*getTiempo()));
+                synchronized(this){
+                    if (pausar)
+                        this.wait();     
+                }
+            } catch (InterruptedException ex) {
+                Logger.getLogger(CPlatoFuerte.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+    
+    public void cocinar(){
+        mesonPlatoFuerte[entra]=1; //se cocino 1 y se pone en su meson
+        entra = (entra+1)%30; //30 puestos del meson
+        //cambiar en interfaz**
+    }
     
 
     public int[] getMesonEntradas() {

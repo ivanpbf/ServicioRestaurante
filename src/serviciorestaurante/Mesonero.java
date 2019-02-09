@@ -10,5 +10,5 @@ package serviciorestaurante;
  * @author Ivan
  */
 public class Mesonero extends Thread{
-    
+    //basicamente es el ensamblador
 }
