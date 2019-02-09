@@ -16,8 +16,8 @@ public class CPlatoFuerte extends Cocinero{
     private boolean ejecutar = true;
     private boolean pausar = false;
 
-    public CPlatoFuerte(int mesonPlatoFuerte[], Semaphore SE, Semaphore SP, Semaphore SC, double tiempo, int entra, int sale, Servicio interfaz) {
-        super(SE, SP, SC, tiempo, entra, sale, interfaz);
+    public CPlatoFuerte(int mesonPlatoFuerte[], Semaphore SE, Semaphore SP, Semaphore SC, int entra, int sale, Servicio interfaz) {
+        super(SE, SP, SC, 0.33, 1, entra, sale, interfaz);
         this.mesonPlatoFuerte = mesonPlatoFuerte;
     }
     

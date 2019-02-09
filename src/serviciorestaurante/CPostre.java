@@ -16,8 +16,8 @@ public class CPostre extends Cocinero{
     private boolean ejecutar = true;
     private boolean pausar = false;
 
-    public CPostre(int mesonPostre[], Semaphore SE, Semaphore SP, Semaphore SC, double tiempo, int entra, int sale, Servicio interfaz) {
-        super(SE, SP, SC, tiempo, entra, sale, interfaz);
+    public CPostre(int mesonPostre[], Semaphore SE, Semaphore SP, Semaphore SC, int entra, int sale, Servicio interfaz) {
+        super(SE, SP, SC, 0.30, 1, entra, sale, interfaz);
         this.mesonPostre = mesonPostre;
     }
     
