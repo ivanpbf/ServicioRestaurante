@@ -16,7 +16,6 @@ import java.util.logging.Logger;
 public class CPostre extends Cocinero{
     private int mesonPostre[];
     private boolean ejecutar = true;
-    private boolean pausar = false;
 
     public CPostre(int mesonPostre[], Semaphore SE, Semaphore SP, Semaphore SC, int entra, int sale, Servicio interfaz) {
         super(SE, SP, SC, 0.30, 1, entra, sale, interfaz);
@@ -33,10 +32,6 @@ public class CPostre extends Cocinero{
                 SE.release();
                 SC.release();
                 CPostre.sleep((long)(1000*getTiempo()));
-                synchronized(this){
-                    if (pausar)
-                        this.wait();     
-                }
             } catch (InterruptedException ex) {
                 Logger.getLogger(CPostre.class.getName()).log(Level.SEVERE, null, ex);
             }

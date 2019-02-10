@@ -14,7 +14,6 @@ import java.util.logging.Logger;
 public class CEntrada extends Cocinero{
     private int mesonEntradas[];
     private boolean ejecutar = true;
-    private boolean pausar = false;
 
     public CEntrada(int mesonEntradas[], Semaphore SE, Semaphore SP, Semaphore SC, int entra, int sale, Servicio interfaz) {
         super(SE, SP, SC, 0.25, 1, entra, sale, interfaz);
@@ -32,10 +31,6 @@ public class CEntrada extends Cocinero{
                 SE.release();
                 SC.release();
                 CEntrada.sleep((long)(1000*getTiempo()));
-                synchronized(this){
-                    if (pausar)
-                        this.wait();     
-                }
             } catch (InterruptedException ex) {
                 Logger.getLogger(CEntrada.class.getName()).log(Level.SEVERE, null, ex);
             }

@@ -16,7 +16,6 @@ import java.util.logging.Logger;
 public class CPlatoFuerte extends Cocinero{
     private int[] mesonPlatoFuerte;
     private boolean ejecutar = true;
-    private boolean pausar = false;
 
     public CPlatoFuerte(int mesonPlatoFuerte[], Semaphore SE, Semaphore SP, Semaphore SC, int entra, int sale, Servicio interfaz) {
         super(SE, SP, SC, 0.33, 1, entra, sale, interfaz);
@@ -33,10 +32,6 @@ public class CPlatoFuerte extends Cocinero{
                 SE.release();
                 SC.release();
                 CPlatoFuerte.sleep((long)(1000*getTiempo()));
-                synchronized(this){
-                    if (pausar)
-                        this.wait();     
-                }
             } catch (InterruptedException ex) {
                 Logger.getLogger(CPlatoFuerte.class.getName()).log(Level.SEVERE, null, ex);
             }
