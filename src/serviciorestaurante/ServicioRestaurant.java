@@ -53,6 +53,24 @@ public class ServicioRestaurant { // ojo que esta es la clase principal donde se
     //iniciar el gerente y cronometrador
     
      public static void main(String[] args) {
-     
+         //iniciamos todo
+        servicio.setVisible(true);
+        
+        //comenzamos las cantidades iniciales
+        CEntradas[0] = new CEntrada(mesonEntradas, SEEntrada, SEEntrada, SCEntrada, entraE, saleE, servicio);
+        CEntradas[0].start();
+        //cambias el numero en interfaz
+        for(int i = 0; i < 2; i++){
+            CPlato[i] = new CPlatoFuerte(mesonPlato, SEPlato, SEPlato, SCPlato, entraE, saleE, servicio);
+            CPlato[i].start();
+            //set numero en interfaz
+        }
+        //la cantidad de cocineros de postre inicial es 0
+        //que hacemos con eso? creo que nada, se contrata y ya
+        //tampoco nos dan una cantidad inicial de ensambladores, asi que usemos 1?
+        Mesoneros[0] = new Mesonero(SEComida, SPComida, SCComida, entraC, saleC, SEEntrada, SPEntrada, SCEntrada, entraE, saleE,
+                SEPlato, SPPlato, SCPlato, entraPF, salePF, SEPostre, SPPostre, SCPostre, entraP, saleP, servicio, mesonEntradas, mesonPlato, mesonPostre, mesonComida);
+        Mesoneros[0].start();
+        //cambiar en interfaz
      }
 }
