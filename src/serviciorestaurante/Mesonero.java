@@ -5,10 +5,10 @@
  */
 package serviciorestaurante;
 
-import serviciorestaurante.Servicio;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static serviciorestaurante.ServicioRestaurant.Mesoneros;
 /**
  *
  * @author Ivan
@@ -39,7 +39,7 @@ public class Mesonero extends Thread{
     private int entraP; 
     private int saleP;
     
-    private Servicio servicio;
+    private ServicioInterfaz servicio;
     
     private int mesonEntradas[];
     private int mesonPlato[]; //meson plato fuerte
@@ -52,7 +52,7 @@ public class Mesonero extends Thread{
 
     public Mesonero(Semaphore SEComida, Semaphore SPComida, Semaphore SCComida, int entraC, int saleC, Semaphore SEEntrada, Semaphore SPEntrada, Semaphore SCEntrada, int entraE, int saleE,
             Semaphore SEPlato, Semaphore SPPlato, Semaphore SCPlato, int entraPF, int salePF, Semaphore SEPostre, Semaphore SPPostre, Semaphore SCPostre, int entraP, int saleP,
-            Servicio servicio, int[] mesonEntradas, int[] mesonPlato, int[] mesonPostre, int[] mesonComida) {
+            ServicioInterfaz servicio, int[] mesonEntradas, int[] mesonPlato, int[] mesonPostre, int[] mesonComida) {
         this.SEComida = SEComida;
         this.SPComida = SPComida;
         this.SCComida = SCComida;
@@ -115,29 +115,63 @@ public class Mesonero extends Thread{
     
     public void tomarEntrada(){
         mesonEntradas[saleE] = 0;
-        mesonEntradas[saleE+1] = 0; //VERIFICAR creo que no es asi porque hay que considerar el tamn~ano maximo?
-        mesonEntradas[saleE+2] = 0;
-        saleE = saleE+3;
+        mesonEntradas[(saleE+1)%20] = 0; //esto lo dio en la clase del miercoles 13 
+        mesonEntradas[(saleE+2)%20] = 0;
+        saleE = (saleE+3)%20;
         //cambiar en interfaz
     }
     
     public void tomarPlatofuerte(){
         mesonPlato[salePF] = 0;
-        mesonPlato[salePF+1] = 0; //VERIFICAR creo que no es asi
-        saleP = salePF+2;
+        mesonPlato[(salePF+1)%30] = 0;
+        saleP = (salePF+2)%30;
         //cambiar en interfaz
     }
     
     public void tomarPostre(){
         mesonPostre[saleP] = 0;
-        saleP = saleP+1;
+        saleP = (saleP+1)%10;
         //cambiar en interfaz
     }
     
     public void servir(){
         mesonComida[entraC] = 1;
-        entraC = entraC+1;
+        entraC = (entraC+1)%100;
         //cambiar en interfaz
     }
     //luego contratar y despedir
+    public void contratar(int cant){ //meter cocineros, la cantidad vendra de la interfaz
+        for (int j = 0; j < cant; j++){
+            boolean contratado = false;
+            for (int i = 0; i<6;i++){
+                if(Mesoneros[i] == null && !contratado){
+                    Mesoneros[i] = new Mesonero(SEComida, SPComida, SCComida, entraC, saleC, SEEntrada, SPEntrada, SCEntrada, entraE, saleE, SEPlato, SPPlato, 
+                            SCPlato, entraPF, salePF, SEPostre, SPPostre, SCPostre, entraP, saleP, servicio, mesonEntradas, mesonPlato, mesonPostre, mesonComida);
+                    Mesoneros[i].start();
+                    contratado = true;
+                    //cambia en la interfaz
+                }
+                else if(contratado){
+                    break;
+                }
+            }
+        }
+    }
+    
+    public void despedir(int cant){
+        for (int j = 0; j < cant; j++){
+            boolean despedido = false;
+            for (int i = 0; i<6;i++){
+                if(Mesoneros[i] == null && !despedido){
+                    Mesoneros[i].ejecutar = false;
+                    Mesoneros[i] = null;
+                    despedido = true;
+                    //cambia en la interfaz
+                }
+                else if(despedido){
+                    break;
+                }
+            }
+        }
+    }
 }

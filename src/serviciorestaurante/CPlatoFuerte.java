@@ -8,6 +8,8 @@ package serviciorestaurante;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static serviciorestaurante.ServicioRestaurant.CPlato;
+import serviciorestaurante.ServicioInterfaz;
 
 /**
  *
@@ -17,7 +19,7 @@ public class CPlatoFuerte extends Cocinero{
     private int[] mesonPlatoFuerte;
     private boolean ejecutar = true;
 
-    public CPlatoFuerte(int mesonPlatoFuerte[], Semaphore SE, Semaphore SP, Semaphore SC, int entra, int sale, Servicio interfaz) {
+    public CPlatoFuerte(int mesonPlatoFuerte[], Semaphore SE, Semaphore SP, Semaphore SC, int entra, int sale, ServicioInterfaz interfaz) {
         super(SE, SP, SC, 0.33, 1, entra, sale, interfaz);
         this.mesonPlatoFuerte = mesonPlatoFuerte;
     }
@@ -42,6 +44,40 @@ public class CPlatoFuerte extends Cocinero{
         mesonPlatoFuerte[entra]=1; //se cocino 1 y se pone en su meson
         entra = (entra+1)%30; //30 puestos del meson
         //cambiar en interfaz**
+    }
+    
+    public void contratar(int cant){ //meter cocineros, la cantidad vendra de la interfaz
+        for (int j = 0; j < cant; j++){
+            boolean contratado = false;
+            for (int i = 0; i<4;i++){
+                if(CPlato[i] == null && !contratado){
+                    CPlato[i] = new CPlatoFuerte(mesonPlatoFuerte, SE, SP, SC, entra, sale, servicio);
+                    CPlato[i].start();
+                    contratado = true;
+                    //cambia en la interfaz
+                }
+                else if(contratado){
+                    break;
+                }
+            }
+        }
+    }
+    
+    public void despedir(int cant){ //despedir, cantidad vendra de interfaz
+        for (int j = 0; j < cant; j++){
+            boolean despedido = false;
+            for (int i = 0; i<4;i++){
+                if(CPlato[i] == null && !despedido){
+                    CPlato[i].ejecutar = false;
+                    CPlato[i] = null;
+                    despedido = true;
+                    //cambia en la interfaz
+                }
+                else if(despedido){
+                    break;
+                }
+            }
+        }
     }
     
 

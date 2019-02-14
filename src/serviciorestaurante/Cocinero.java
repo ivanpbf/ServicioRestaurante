@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package serviciorestaurante;
-import serviciorestaurante.Servicio;
+import serviciorestaurante.ServicioRestaurant;
 import java.util.concurrent.Semaphore;
 /**
  *
@@ -18,9 +18,9 @@ public class Cocinero extends Thread{
     protected int taza; //taza de produccion, ej: 1 por hora y eso
     protected int entra; //posicion de entrada
     protected int sale; //posicion cuando sale
-    protected Servicio interfaz;
+    protected ServicioInterfaz servicio;
     
-    public Cocinero(Semaphore SE, Semaphore SP, Semaphore SC, double tiempo,int taza, int entra, int sale, Servicio interfaz){
+    public Cocinero(Semaphore SE, Semaphore SP, Semaphore SC, double tiempo,int taza, int entra, int sale, ServicioInterfaz servicio){
         this.SE = SE;
         this.SP = SP;
         this.SC = SC;
@@ -28,7 +28,7 @@ public class Cocinero extends Thread{
         this.taza = taza;
         this.entra = entra;
         this.sale = sale;
-        this.interfaz = interfaz;
+        this.servicio = servicio;
     }
 
     public Semaphore getSE() {
@@ -55,8 +55,8 @@ public class Cocinero extends Thread{
         return sale;
     }
 
-    public Servicio getInterfaz() {
-        return interfaz;
+    public ServicioInterfaz getInterfaz() {
+        return servicio;
     }
 
     public void setSE(Semaphore SE) {
@@ -83,8 +83,8 @@ public class Cocinero extends Thread{
         this.sale = sale;
     }
 
-    public void setInterfaz(Servicio interfaz) {
-        this.interfaz = interfaz;
+    public void setInterfaz(ServicioInterfaz interfaz) {
+        this.servicio = interfaz;
     }
     
     
