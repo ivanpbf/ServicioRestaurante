@@ -4,8 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Ivan/Documents/NetBeansProjects/ServicioRestaurante/src/serviciorestaurante/Mesonero.java</file>
-            <file>file:/C:/Users/Ivan/Documents/NetBeansProjects/ServicioRestaurante/src/serviciorestaurante/Cocinero.java</file>
-            <file>file:/C:/Users/Ivan/Documents/NetBeansProjects/ServicioRestaurante/src/serviciorestaurante/Servicio.java</file>
+            <file>file:/C:/Users/Ivan/Documents/NetBeansProjects/ServicioRestaurante/src/serviciorestaurante/Gerente.java</file>
+            <file>file:/C:/Users/Ivan/Documents/NetBeansProjects/ServicioRestaurante/src/serviciorestaurante/JefeMesoneros.java</file>
+            <file>file:/C:/Users/Ivan/Documents/NetBeansProjects/ServicioRestaurante/src/serviciorestaurante/ServicioRestaurant.java</file>
             <file>file:/C:/Users/Ivan/Documents/NetBeansProjects/ServicioRestaurante/src/serviciorestaurante/CPlatoFuerte.java</file>
             <file>file:/C:/Users/Ivan/Documents/NetBeansProjects/ServicioRestaurante/src/serviciorestaurante/CPostre.java</file>
             <file>file:/C:/Users/Ivan/Documents/NetBeansProjects/ServicioRestaurante/src/serviciorestaurante/CEntrada.java</file>

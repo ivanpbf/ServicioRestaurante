@@ -48,13 +48,18 @@ public class ServicioRestaurant { // ojo que esta es la clase principal donde se
     static public Semaphore SCComida  = new Semaphore(0);
     static public int entraC=0;
     static public int saleC=0;
+    //semaforo de cronometrador
+    static public Semaphore SEJefe = new Semaphore(1);
     //tiene la interfaz
     public static ServicioInterfaz servicio = new ServicioInterfaz();
     //iniciar el gerente y cronometrador
+    static public JefeMesoneros jefemesoneros = new JefeMesoneros(1, SEJefe, servicio); //inicia en 1?
+    static public Gerente gerente = new Gerente(mesonComida, SEComida, SPComida, SCComida, SEJefe, entraC, saleC, jefemesoneros, servicio);
     
      public static void main(String[] args) {
          //iniciamos todo
         servicio.setVisible(true);
+        
         
         //comenzamos las cantidades iniciales
         CEntradas[0] = new CEntrada(mesonEntradas, SEEntrada, SEEntrada, SCEntrada, entraE, saleE, servicio);
