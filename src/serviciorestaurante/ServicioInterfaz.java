@@ -5,6 +5,13 @@
  */
 package serviciorestaurante;
 
+import java.awt.JobAttributes;
+import javax.swing.JTextField;
+import java.util.concurrent.Semaphore;
+import javax.swing.JOptionPane;
+import serviciorestaurante.Gerente;
+import serviciorestaurante.JefeMesoneros;
+import static serviciorestaurante.ServicioRestaurant.*;
 /**
  *
  * @author Ivan
@@ -28,71 +35,81 @@ public class ServicioInterfaz extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        ContratarEntrada = new javax.swing.JButton();
+        DespedirEntrada = new javax.swing.JButton();
+        Salir = new javax.swing.JButton();
         jLabelLogo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        CocinerosEntradas = new javax.swing.JTextField();
+        MesonEntradas = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        CocinerosPlatos = new javax.swing.JTextField();
+        MesonPlatos = new javax.swing.JTextField();
+        ContratarPlato = new javax.swing.JButton();
+        DespedirPlato = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jButton6 = new javax.swing.JButton();
+        CocinerosPostres = new javax.swing.JTextField();
+        MesonPostres = new javax.swing.JTextField();
+        ContratarPostre = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
-        jButton7 = new javax.swing.JButton();
+        DespedirPostre = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jTextField8 = new javax.swing.JTextField();
+        Mesoneros = new javax.swing.JTextField();
+        ContratarMesonero = new javax.swing.JButton();
+        DespedirMesonero = new javax.swing.JButton();
+        Comidas = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
-        jTextField10 = new javax.swing.JTextField();
+        JefeMesoneros = new javax.swing.JTextField();
+        Gerente = new javax.swing.JTextField();
         jSeparator5 = new javax.swing.JSeparator();
         jLabel15 = new javax.swing.JLabel();
-        jTextField11 = new javax.swing.JTextField();
-        jButton10 = new javax.swing.JButton();
+        HorasRestantes = new javax.swing.JTextField();
+        Iniciar = new javax.swing.JButton();
         jLabelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setBackground(new java.awt.Color(153, 255, 153));
-        jButton1.setText("Contratar");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, 90, -1));
-
-        jButton2.setBackground(new java.awt.Color(255, 102, 102));
-        jButton2.setText("Despedir");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 90, -1));
-
-        jButton3.setBackground(new java.awt.Color(255, 0, 0));
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("SALIR");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        ContratarEntrada.setBackground(new java.awt.Color(153, 255, 153));
+        ContratarEntrada.setText("Contratar");
+        ContratarEntrada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                ContratarEntradaActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 575, -1, 30));
+        getContentPane().add(ContratarEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, 90, -1));
+
+        DespedirEntrada.setBackground(new java.awt.Color(255, 102, 102));
+        DespedirEntrada.setText("Despedir");
+        DespedirEntrada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DespedirEntradaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(DespedirEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 90, -1));
+
+        Salir.setBackground(new java.awt.Color(255, 0, 0));
+        Salir.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Salir.setForeground(new java.awt.Color(255, 255, 255));
+        Salir.setText("SALIR");
+        Salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 575, -1, 30));
 
         jLabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/unimet-logo.png"))); // NOI18N
         getContentPane().add(jLabelLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 530, 200, 80));
@@ -111,14 +128,14 @@ public class ServicioInterfaz extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setText("Disponibilidad: ");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, -1));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, 60, -1));
+        getContentPane().add(CocinerosEntradas, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, 60, -1));
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        MesonEntradas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                MesonEntradasActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 60, -1));
+        getContentPane().add(MesonEntradas, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 60, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
@@ -133,26 +150,31 @@ public class ServicioInterfaz extends javax.swing.JFrame {
         jLabel6.setText("Disponibilidad: ");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, -1, -1));
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        CocinerosPlatos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                CocinerosPlatosActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, 60, -1));
-        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, 60, -1));
+        getContentPane().add(CocinerosPlatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, 60, -1));
+        getContentPane().add(MesonPlatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, 60, -1));
 
-        jButton4.setBackground(new java.awt.Color(153, 255, 153));
-        jButton4.setText("Contratar");
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 230, 90, -1));
-
-        jButton5.setBackground(new java.awt.Color(255, 102, 102));
-        jButton5.setText("Despedir");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        ContratarPlato.setBackground(new java.awt.Color(153, 255, 153));
+        ContratarPlato.setText("Contratar");
+        ContratarPlato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                ContratarPlatoActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, 90, -1));
+        getContentPane().add(ContratarPlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 230, 90, -1));
+
+        DespedirPlato.setBackground(new java.awt.Color(255, 102, 102));
+        DespedirPlato.setText("Despedir");
+        DespedirPlato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DespedirPlatoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(DespedirPlato, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, 90, -1));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel7.setText("POSTRE");
@@ -165,17 +187,27 @@ public class ServicioInterfaz extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel9.setText("Disponibilidad: ");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 450, -1, -1));
-        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 410, 60, -1));
-        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 450, 60, -1));
+        getContentPane().add(CocinerosPostres, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 410, 60, -1));
+        getContentPane().add(MesonPostres, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 450, 60, -1));
 
-        jButton6.setBackground(new java.awt.Color(153, 255, 153));
-        jButton6.setText("Contratar");
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 410, 90, -1));
+        ContratarPostre.setBackground(new java.awt.Color(153, 255, 153));
+        ContratarPostre.setText("Contratar");
+        ContratarPostre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ContratarPostreActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ContratarPostre, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 410, 90, -1));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 400, 10));
 
-        jButton7.setBackground(new java.awt.Color(255, 102, 102));
-        jButton7.setText("Depedir");
-        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 450, 90, -1));
+        DespedirPostre.setBackground(new java.awt.Color(255, 102, 102));
+        DespedirPostre.setText("Depedir");
+        DespedirPostre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DespedirPostreActionPerformed(evt);
+            }
+        });
+        getContentPane().add(DespedirPostre, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 450, 90, -1));
         getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 400, 20));
 
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -193,26 +225,31 @@ public class ServicioInterfaz extends javax.swing.JFrame {
         jLabel12.setText("Ordenes Atendidas: ");
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 160, -1, -1));
 
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+        Mesoneros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
+                MesonerosActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 60, 60, -1));
+        getContentPane().add(Mesoneros, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 60, 60, -1));
 
-        jButton8.setBackground(new java.awt.Color(153, 255, 153));
-        jButton8.setText("Contratar");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        ContratarMesonero.setBackground(new java.awt.Color(153, 255, 153));
+        ContratarMesonero.setText("Contratar");
+        ContratarMesonero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                ContratarMesoneroActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 110, -1, -1));
+        getContentPane().add(ContratarMesonero, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 110, -1, -1));
 
-        jButton9.setBackground(new java.awt.Color(255, 102, 102));
-        jButton9.setText("Despedir");
-        getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 110, -1, -1));
-        getContentPane().add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 160, 50, -1));
+        DespedirMesonero.setBackground(new java.awt.Color(255, 102, 102));
+        DespedirMesonero.setText("Despedir");
+        DespedirMesonero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DespedirMesoneroActionPerformed(evt);
+            }
+        });
+        getContentPane().add(DespedirMesonero, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 110, -1, -1));
+        getContentPane().add(Comidas, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 160, 50, -1));
         getContentPane().add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 210, 310, 20));
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -222,19 +259,19 @@ public class ServicioInterfaz extends javax.swing.JFrame {
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel14.setText("Gerente: ");
         getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 280, -1, -1));
-        getContentPane().add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 240, 80, -1));
-        getContentPane().add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 280, 80, -1));
+        getContentPane().add(JefeMesoneros, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 240, 80, -1));
+        getContentPane().add(Gerente, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 280, 80, -1));
         getContentPane().add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 320, 310, 20));
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel15.setText("Horas restantes: ");
         getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 360, -1, -1));
-        getContentPane().add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 390, 70, -1));
+        getContentPane().add(HorasRestantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 390, 70, -1));
 
-        jButton10.setBackground(new java.awt.Color(51, 255, 51));
-        jButton10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton10.setText("INICIAR");
-        getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 575, -1, 30));
+        Iniciar.setBackground(new java.awt.Color(51, 255, 51));
+        Iniciar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Iniciar.setText("INICIAR");
+        getContentPane().add(Iniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 575, -1, 30));
 
         jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/restaurant-766050_960_720.jpg"))); // NOI18N
         jLabelFondo.setOpaque(true);
@@ -243,59 +280,117 @@ public class ServicioInterfaz extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
        System.exit(0);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_SalirActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void MesonEntradasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MesonEntradasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_MesonEntradasActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void CocinerosPlatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CocinerosPlatosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_CocinerosPlatosActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    private void DespedirPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DespedirPlatoActionPerformed
+       CPlatoFuerte cocinero = new CPlatoFuerte(mesonPlato, SEPlato, SEPlato, SCPlato, entraPF, salePF, servicio);
+        if(!"".equals(CocinerosPlatos.getText()) && Integer.parseInt(CocinerosPlatos.getText()) <= 4 &&
+                Integer.parseInt(CocinerosPlatos.getText()) > 0 ){
+            cocinero.despedir(Integer.parseInt(CocinerosPlatos.getText()));
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "No se puede despedir mas Cocineros de Platos Fuertes.");
+        }
+    }//GEN-LAST:event_DespedirPlatoActionPerformed
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void MesonerosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MesonerosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+    }//GEN-LAST:event_MesonerosActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+    private void ContratarMesoneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContratarMesoneroActionPerformed
+        Mesonero mesonero = new Mesonero(SEComida, SPComida, SCComida, entraC, saleC, SEEntrada, SPEntrada, SCEntrada, entraE, saleE,
+                SEPlato, SPPlato, SCPlato, entraPF, salePF, SEPostre, SPPostre, SCPostre, entraP, saleP, servicio, mesonEntradas, mesonPlato, mesonPostre, mesonComida);
+        if(!"".equals(Mesoneros.getText()) && Integer.parseInt(Mesoneros.getText()) < 6 &&
+                Integer.parseInt(Mesoneros.getText()) > 0 ){
+            mesonero.contratar(Integer.parseInt(Mesoneros.getText()));
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "No se puede contratar mas Mesoneros.");
+        }
+    }//GEN-LAST:event_ContratarMesoneroActionPerformed
+
+    private void ContratarEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContratarEntradaActionPerformed
+        CEntrada cocinero = new CEntrada(mesonEntradas, SEEntrada, SEEntrada, SCEntrada, entraE, saleE, servicio);
+        if(!"".equals(CocinerosEntradas.getText()) && Integer.parseInt(CocinerosEntradas.getText()) < 3 &&
+                Integer.parseInt(CocinerosEntradas.getText()) > 0 ){
+            cocinero.contratar(Integer.parseInt(CocinerosEntradas.getText()));
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "No se puede contratar mas Cocineros de Entradas.");
+        }
+    }//GEN-LAST:event_ContratarEntradaActionPerformed
+
+    private void DespedirEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DespedirEntradaActionPerformed
+        CEntrada cocinero = new CEntrada(mesonEntradas, SEEntrada, SEEntrada, SCEntrada, entraE, saleE, servicio);
+        if(!"".equals(CocinerosEntradas.getText()) && Integer.parseInt(CocinerosEntradas.getText()) <= 3 &&
+                Integer.parseInt(CocinerosEntradas.getText()) > 0 ){
+            cocinero.despedir(Integer.parseInt(CocinerosEntradas.getText()));
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "No se puede despedir mas Cocineros de Entradas.");
+        }
+    }//GEN-LAST:event_DespedirEntradaActionPerformed
+
+    private void ContratarPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContratarPlatoActionPerformed
+        CPlatoFuerte cocinero = new CPlatoFuerte(mesonPlato, SEPlato, SEPlato, SCPlato, entraPF, salePF, servicio);
+        if(!"".equals(CocinerosPlatos.getText()) && Integer.parseInt(CocinerosPlatos.getText()) < 4 &&
+                Integer.parseInt(CocinerosPlatos.getText()) > 0 ){
+            cocinero.contratar(Integer.parseInt(CocinerosPlatos.getText()));
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "No se puede contratar mas Cocineros de Platos Fuertes.");
+        }
+    }//GEN-LAST:event_ContratarPlatoActionPerformed
+
+    private void ContratarPostreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContratarPostreActionPerformed
+        CPostre cocinero = new CPostre(mesonPostre, SEPostre, SEPostre, SCPostre, entraP, saleP, servicio);
+        if(!"".equals(CocinerosPostres.getText()) && Integer.parseInt(CocinerosPostres.getText()) < 2 &&
+                Integer.parseInt(CocinerosPostres.getText()) > 0 ){
+            cocinero.contratar(Integer.parseInt(CocinerosPostres.getText()));
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "No se puede contratar mas Cocineros de Postres.");
+        }
+    }//GEN-LAST:event_ContratarPostreActionPerformed
+
+    private void DespedirMesoneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DespedirMesoneroActionPerformed
+        Mesonero mesonero = new Mesonero(SEComida, SPComida, SCComida, entraC, saleC, SEEntrada, SPEntrada, SCEntrada, entraE, saleE,
+                SEPlato, SPPlato, SCPlato, entraPF, salePF, SEPostre, SPPostre, SCPostre, entraP, saleP, servicio, mesonEntradas, mesonPlato, mesonPostre, mesonComida);
+        if(!"".equals(Mesoneros.getText()) && Integer.parseInt(Mesoneros.getText()) <= 6 &&
+                Integer.parseInt(Mesoneros.getText()) > 0 ){
+            mesonero.despedir(Integer.parseInt(Mesoneros.getText()));
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "No se puede despedir mas Mesoneros.");
+        }
+    }//GEN-LAST:event_DespedirMesoneroActionPerformed
+
+    private void DespedirPostreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DespedirPostreActionPerformed
+        CPostre cocinero = new CPostre(mesonPostre, SEPostre, SEPostre, SCPostre, entraP, saleP, servicio);
+        if(!"".equals(CocinerosPostres.getText()) && Integer.parseInt(CocinerosPostres.getText()) <= 2 &&
+                Integer.parseInt(CocinerosPostres.getText()) > 0 ){
+            cocinero.despedir(Integer.parseInt(CocinerosPostres.getText()));
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "No se puede contratar mas Cocineros de Postres.");
+        }
+    }//GEN-LAST:event_DespedirPostreActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ServicioInterfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ServicioInterfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ServicioInterfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ServicioInterfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new ServicioInterfaz().setVisible(true);
@@ -303,17 +398,119 @@ public class ServicioInterfaz extends javax.swing.JFrame {
         });
     }
 
+    public JTextField getCocinerosEntradas() {
+        return CocinerosEntradas;
+    }
+
+    public JTextField getCocinerosPlatos() {
+        return CocinerosPlatos;
+    }
+
+    public JTextField getCocinerosPostres() {
+        return CocinerosPostres;
+    }
+
+    public JTextField getComidas() {
+        return Comidas;
+    }
+
+    public JTextField getGerente() {
+        return Gerente;
+    }
+
+    public JTextField getHorasRestantes() {
+        return HorasRestantes;
+    }
+
+    public JTextField getJefeMesoneros() {
+        return JefeMesoneros;
+    }
+
+    public JTextField getMesonEntradas() {
+        return MesonEntradas;
+    }
+
+    public JTextField getMesonPlatos() {
+        return MesonPlatos;
+    }
+
+    public JTextField getMesonPostres() {
+        return MesonPostres;
+    }
+
+    public JTextField getMesoneros() {
+        return Mesoneros;
+    }
+
+    public void setCocinerosEntradas(JTextField CocinerosEntradas) {
+        this.CocinerosEntradas = CocinerosEntradas;
+    }
+
+    public void setCocinerosPlatos(JTextField CocinerosPlatos) {
+        this.CocinerosPlatos = CocinerosPlatos;
+    }
+
+    public void setCocinerosPostres(JTextField CocinerosPostres) {
+        this.CocinerosPostres = CocinerosPostres;
+    }
+
+    public void setMesonEntradas(JTextField MesonEntradas) {
+        this.MesonEntradas = MesonEntradas;
+    }
+
+    public void setMesonPlatos(JTextField MesonPlatos) {
+        this.MesonPlatos = MesonPlatos;
+    }
+
+    public void setMesonPostres(JTextField MesonPostres) {
+        this.MesonPostres = MesonPostres;
+    }
+
+    public void setMesoneros(JTextField Mesoneros) {
+        this.Mesoneros = Mesoneros;
+    }
+
+    public void setGerente(JTextField Gerente) {
+        this.Gerente = Gerente;
+    }
+
+    public void setJefeMesoneros(JTextField JefeMesoneros) {
+        this.JefeMesoneros = JefeMesoneros;
+    }
+
+    public void setHorasRestantes(JTextField HorasRestantes) {
+        this.HorasRestantes = HorasRestantes;
+    }
+
+    public void setComidas(JTextField Comidas) {
+        this.Comidas = Comidas;
+    }
+    
+    
+    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
+    private javax.swing.JTextField CocinerosEntradas;
+    private javax.swing.JTextField CocinerosPlatos;
+    private javax.swing.JTextField CocinerosPostres;
+    private javax.swing.JTextField Comidas;
+    private javax.swing.JButton ContratarEntrada;
+    private javax.swing.JButton ContratarMesonero;
+    private javax.swing.JButton ContratarPlato;
+    private javax.swing.JButton ContratarPostre;
+    private javax.swing.JButton DespedirEntrada;
+    private javax.swing.JButton DespedirMesonero;
+    private javax.swing.JButton DespedirPlato;
+    private javax.swing.JButton DespedirPostre;
+    private javax.swing.JTextField Gerente;
+    private javax.swing.JTextField HorasRestantes;
+    private javax.swing.JButton Iniciar;
+    private javax.swing.JTextField JefeMesoneros;
+    private javax.swing.JTextField MesonEntradas;
+    private javax.swing.JTextField MesonPlatos;
+    private javax.swing.JTextField MesonPostres;
+    private javax.swing.JTextField Mesoneros;
+    private javax.swing.JButton Salir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -336,16 +533,5 @@ public class ServicioInterfaz extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 }

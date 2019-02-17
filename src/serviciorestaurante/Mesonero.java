@@ -118,26 +118,30 @@ public class Mesonero extends Thread{
         mesonEntradas[(saleE+1)%20] = 0; //esto lo dio en la clase del miercoles 13 
         mesonEntradas[(saleE+2)%20] = 0;
         saleE = (saleE+3)%20;
-        //cambiar en interfaz
+        int tomar = Integer.parseInt(this.servicio.getMesonEntradas().getText())-3;
+        this.servicio.getMesonEntradas().setText(Integer.toString(tomar));
     }
     
     public void tomarPlatofuerte(){
         mesonPlato[salePF] = 0;
         mesonPlato[(salePF+1)%30] = 0;
         saleP = (salePF+2)%30;
-        //cambiar en interfaz
+        int tomar = Integer.parseInt(this.servicio.getMesonPlatos().getText())-2;
+        this.servicio.getMesonPlatos().setText(Integer.toString(tomar));
     }
     
     public void tomarPostre(){
         mesonPostre[saleP] = 0;
         saleP = (saleP+1)%10;
-        //cambiar en interfaz
+        int tomar = Integer.parseInt(this.servicio.getMesonPostres().getText())-1;
+        this.servicio.getMesonPostres().setText(Integer.toString(tomar));
     }
     
     public void servir(){
         mesonComida[entraC] = 1;
         entraC = (entraC+1)%100;
-        //cambiar en interfaz
+        int tomar = Integer.parseInt(this.servicio.getComidas().getText())+1;
+        this.servicio.getComidas().setText(Integer.toString(tomar));
     }
     //luego contratar y despedir
     public void contratar(int cant){ //meter cocineros, la cantidad vendra de la interfaz
@@ -149,7 +153,8 @@ public class Mesonero extends Thread{
                             SCPlato, entraPF, salePF, SEPostre, SPPostre, SCPostre, entraP, saleP, servicio, mesonEntradas, mesonPlato, mesonPostre, mesonComida);
                     Mesoneros[i].start();
                     contratado = true;
-                    //cambia en la interfaz
+                    int nuevo = Integer.parseInt(this.servicio.getMesoneros().getText())+1;
+                    this.servicio.getMesoneros().setText(Integer.toString(nuevo));
                 }
                 else if(contratado){
                     break;
@@ -166,7 +171,8 @@ public class Mesonero extends Thread{
                     Mesoneros[i].ejecutar = false;
                     Mesoneros[i] = null;
                     despedido = true;
-                    //cambia en la interfaz
+                    int nuevo = Integer.parseInt(this.servicio.getMesoneros().getText())-1;
+                    this.servicio.getMesoneros().setText(Integer.toString(nuevo));
                 }
                 else if(despedido){
                     break;

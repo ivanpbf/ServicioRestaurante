@@ -43,7 +43,8 @@ public class CPlatoFuerte extends Cocinero{
     public void cocinar(){
         mesonPlatoFuerte[entra]=1; //se cocino 1 y se pone en su meson
         entra = (entra+1)%30; //30 puestos del meson
-        //cambiar en interfaz**
+        int nuevo = Integer.parseInt(this.servicio.getMesonPlatos().getText())+1;
+        this.servicio.getMesonPlatos().setText(Integer.toString(nuevo));
     }
     
     public void contratar(int cant){ //meter cocineros, la cantidad vendra de la interfaz
@@ -54,7 +55,8 @@ public class CPlatoFuerte extends Cocinero{
                     CPlato[i] = new CPlatoFuerte(mesonPlatoFuerte, SE, SP, SC, entra, sale, servicio);
                     CPlato[i].start();
                     contratado = true;
-                    //cambia en la interfaz
+                    int nuevo = Integer.parseInt(this.servicio.getCocinerosPlatos().getText())+1;
+                    this.servicio.getCocinerosPlatos().setText(Integer.toString(nuevo));
                 }
                 else if(contratado){
                     break;
@@ -71,7 +73,8 @@ public class CPlatoFuerte extends Cocinero{
                     CPlato[i].ejecutar = false;
                     CPlato[i] = null;
                     despedido = true;
-                    //cambia en la interfaz
+                    int nuevo = Integer.parseInt(this.servicio.getCocinerosPlatos().getText())-1;
+                    this.servicio.getCocinerosPlatos().setText(Integer.toString(nuevo));
                 }
                 else if(despedido){
                     break;

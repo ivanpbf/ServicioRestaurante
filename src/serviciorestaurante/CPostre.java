@@ -43,7 +43,8 @@ public class CPostre extends Cocinero{
     public void cocinar(){
         mesonPostre[entra]=1; //se cocino 1 y se pone en su meson
         entra = (entra+1)%10; //10 puestos del meson
-        //cambiar en interfaz**
+        int nuevo = Integer.parseInt(this.servicio.getMesonPostres().getText())+1;
+        this.servicio.getMesonPostres().setText(Integer.toString(nuevo));
     }
     
     public void contratar(int cant){ //meter cocineros, la cantidad vendra de la interfaz
@@ -54,7 +55,8 @@ public class CPostre extends Cocinero{
                     CPostres[i] = new CPostre(mesonPostre, SE, SP, SC, entra, sale, servicio);
                     CPostres[i].start();
                     contratado = true;
-                    //cambia en la interfaz
+                    int nuevo = Integer.parseInt(this.servicio.getCocinerosPostres().getText())+1;
+                    this.servicio.getCocinerosPostres().setText(Integer.toString(nuevo));
                 }
                 else if(contratado){
                     break;
@@ -70,7 +72,8 @@ public class CPostre extends Cocinero{
                     CPostres[i].ejecutar = false;
                     CPostres[i] = null;
                     despedido = true;
-                    //cambia en la interfaz
+                    int nuevo = Integer.parseInt(this.servicio.getCocinerosPostres().getText())-1;
+                    this.servicio.getCocinerosPostres().setText(Integer.toString(nuevo));
                 }
                 else if(despedido){
                     break;

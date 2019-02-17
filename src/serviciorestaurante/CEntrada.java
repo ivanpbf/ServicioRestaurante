@@ -41,7 +41,8 @@ public class CEntrada extends Cocinero{
     public void cocinar(){
         mesonEntradas[entra]=1; //se cocino 1 y se pone en su meson
         entra = (entra+1)%20; //20 puestos del meson
-        //cambiar en interfaz**
+        int nuevo = Integer.parseInt(this.servicio.getMesonEntradas().getText())+1;
+        this.servicio.getMesonEntradas().setText(Integer.toString(nuevo));
     }
     
     //despedir y contratar iran aca
@@ -53,7 +54,8 @@ public class CEntrada extends Cocinero{
                     CEntradas[i] = new CEntrada(mesonEntradas, SE, SP, SC, entra, sale, servicio);
                     CEntradas[i].start();
                     contratado = true;
-                    //cambia en la interfaz
+                    int nuevo = Integer.parseInt(this.servicio.getCocinerosEntradas().getText())+1;
+                    this.servicio.getCocinerosEntradas().setText(Integer.toString(nuevo));
                 }
                 else if(contratado){
                     break;
@@ -70,7 +72,8 @@ public class CEntrada extends Cocinero{
                     CEntradas[i].ejecutar = false;
                     CEntradas[i] = null;
                     despedido = true;
-                    //cambia en la interfaz
+                    int nuevo = Integer.parseInt(this.servicio.getCocinerosEntradas().getText())-1;
+                    this.servicio.getCocinerosEntradas().setText(Integer.toString(nuevo));
                 }
                 else if(despedido){
                     break;
