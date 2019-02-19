@@ -17,7 +17,7 @@ public class JefeMesoneros extends Thread{
     private boolean Escribiendo; 
 
     public JefeMesoneros(double Contador, Semaphore SEJefe, ServicioInterfaz servicio) {
-        this.Contador = Contador;
+        this.Contador = 18; //horas en la que se trabaja?
         this.SEJefe = SEJefe;
         this.servicio = servicio;
         this.Escribiendo = false;
@@ -49,17 +49,17 @@ public class JefeMesoneros extends Thread{
         }
         if(getContador() != 0){
             setContador(getContador()-1);
-            //se cambia en interfaz
+            this.servicio.getHorasRestantes().setText(Integer.toString((int) Contador));
         }
     }
 
     public void setEscribiendo(boolean Escribiendo) {
         this.Escribiendo = Escribiendo;
         if(Escribiendo){
-            //se pone en la interfaz que esta escribiendo/contando
+            this.servicio.getJefeMesoneros().setText("Leyendo");
         }
         else{
-            //se pone que esta esperando
+            this.servicio.getJefeMesoneros().setText("Descansando");
         }
     }
 
