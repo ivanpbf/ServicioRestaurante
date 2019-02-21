@@ -19,8 +19,8 @@ public class CPlatoFuerte extends Cocinero{
     private int[] mesonPlatoFuerte;
     private boolean ejecutar = true;
 
-    public CPlatoFuerte(int mesonPlatoFuerte[], Semaphore SE, Semaphore SP, Semaphore SC, int entra, int sale, ServicioInterfaz interfaz) {
-        super(SE, SP, SC, 0.33, 1, entra, sale, interfaz);
+    public CPlatoFuerte(int mesonPlatoFuerte[], Semaphore SE, Semaphore SP, Semaphore SC,long tiempo, int entra, int sale, ServicioInterfaz interfaz) {
+        super(SE, SP, SC, tiempo, 0.33, entra, sale, interfaz);
         this.mesonPlatoFuerte = mesonPlatoFuerte;
     }
     
@@ -33,7 +33,7 @@ public class CPlatoFuerte extends Cocinero{
                 cocinar();
                 SE.release();
                 SC.release();
-                CPlatoFuerte.sleep((long)(1000*getTiempo()));
+                CPlatoFuerte.sleep((long)(tiempo*taza)); //verificar esto
             } catch (InterruptedException ex) {
                 Logger.getLogger(CPlatoFuerte.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -50,9 +50,9 @@ public class CPlatoFuerte extends Cocinero{
     public void contratar(int cant){ //meter cocineros, la cantidad vendra de la interfaz
         for (int j = 0; j < cant; j++){
             boolean contratado = false;
-            for (int i = 0; i<4;i++){
+            for (int i = 0; i<ServicioRestaurant.maxCantPF;i++){
                 if(CPlato[i] == null && !contratado){
-                    CPlato[i] = new CPlatoFuerte(mesonPlatoFuerte, SE, SP, SC, entra, sale, servicio);
+                    CPlato[i] = new CPlatoFuerte(mesonPlatoFuerte, SE, SP, SC,tiempo, entra, sale, servicio);
                     CPlato[i].start();
                     contratado = true;
                     int nuevo = Integer.parseInt(this.servicio.getCocinerosPlatos().getText())+1;
@@ -68,7 +68,7 @@ public class CPlatoFuerte extends Cocinero{
     public void despedir(int cant){ //despedir, cantidad vendra de interfaz
         for (int j = 0; j < cant; j++){
             boolean despedido = false;
-            for (int i = 0; i<4;i++){
+            for (int i = 0; i<ServicioRestaurant.maxCantPF;i++){
                 if(CPlato[i] == null && !despedido){
                     CPlato[i].ejecutar = false;
                     CPlato[i] = null;

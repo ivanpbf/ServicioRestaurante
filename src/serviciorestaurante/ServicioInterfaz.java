@@ -293,7 +293,7 @@ public class ServicioInterfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_CocinerosPlatosActionPerformed
 
     private void DespedirPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DespedirPlatoActionPerformed
-       CPlatoFuerte cocinero = new CPlatoFuerte(mesonPlato, SEPlato, SEPlato, SCPlato, entraPF, salePF, servicio);
+       CPlatoFuerte cocinero = new CPlatoFuerte(mesonPlato, SEPlato, SEPlato, SCPlato,tiempo, entraPF, salePF, servicio);
         if(!"".equals(CocinerosPlatos.getText()) && Integer.parseInt(CocinerosPlatos.getText()) <= 4 &&
                 Integer.parseInt(CocinerosPlatos.getText()) > 0 ){
             cocinero.despedir(Integer.parseInt(CocinerosPlatos.getText()));
@@ -309,7 +309,7 @@ public class ServicioInterfaz extends javax.swing.JFrame {
 
     private void ContratarMesoneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContratarMesoneroActionPerformed
         Mesonero mesonero = new Mesonero(SEComida, SPComida, SCComida, entraC, saleC, SEEntrada, SPEntrada, SCEntrada, entraE, saleE,
-                SEPlato, SPPlato, SCPlato, entraPF, salePF, SEPostre, SPPostre, SCPostre, entraP, saleP, servicio, mesonEntradas, mesonPlato, mesonPostre, mesonComida);
+                SEPlato, SPPlato, SCPlato, entraPF, salePF, SEPostre, SPPostre, SCPostre, entraP, saleP, servicio,tiempo, mesonEntradas, mesonPlato, mesonPostre, mesonComida);
         if(!"".equals(Mesoneros.getText()) && Integer.parseInt(Mesoneros.getText()) < 6 &&
                 Integer.parseInt(Mesoneros.getText()) > 0 ){
             mesonero.contratar(Integer.parseInt(Mesoneros.getText()));
@@ -320,7 +320,7 @@ public class ServicioInterfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_ContratarMesoneroActionPerformed
 
     private void ContratarEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContratarEntradaActionPerformed
-        CEntrada cocinero = new CEntrada(mesonEntradas, SEEntrada, SEEntrada, SCEntrada, entraE, saleE, servicio);
+        CEntrada cocinero = new CEntrada(mesonEntradas, SEEntrada, SEEntrada, SCEntrada,tiempo, entraE, saleE, servicio);
         if(!"".equals(CocinerosEntradas.getText()) && Integer.parseInt(CocinerosEntradas.getText()) < 3 &&
                 Integer.parseInt(CocinerosEntradas.getText()) > 0 ){
             cocinero.contratar(Integer.parseInt(CocinerosEntradas.getText()));
@@ -331,7 +331,7 @@ public class ServicioInterfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_ContratarEntradaActionPerformed
 
     private void DespedirEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DespedirEntradaActionPerformed
-        CEntrada cocinero = new CEntrada(mesonEntradas, SEEntrada, SEEntrada, SCEntrada, entraE, saleE, servicio);
+        CEntrada cocinero = new CEntrada(mesonEntradas, SEEntrada, SEEntrada, SCEntrada,tiempo, entraE, saleE, servicio);
         if(!"".equals(CocinerosEntradas.getText()) && Integer.parseInt(CocinerosEntradas.getText()) <= 3 &&
                 Integer.parseInt(CocinerosEntradas.getText()) > 0 ){
             cocinero.despedir(Integer.parseInt(CocinerosEntradas.getText()));
@@ -342,7 +342,7 @@ public class ServicioInterfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_DespedirEntradaActionPerformed
 
     private void ContratarPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContratarPlatoActionPerformed
-        CPlatoFuerte cocinero = new CPlatoFuerte(mesonPlato, SEPlato, SEPlato, SCPlato, entraPF, salePF, servicio);
+        CPlatoFuerte cocinero = new CPlatoFuerte(mesonPlato, SEPlato, SEPlato, SCPlato,tiempo, entraPF, salePF, servicio);
         if(!"".equals(CocinerosPlatos.getText()) && Integer.parseInt(CocinerosPlatos.getText()) < 4 &&
                 Integer.parseInt(CocinerosPlatos.getText()) > 0 ){
             cocinero.contratar(Integer.parseInt(CocinerosPlatos.getText()));
@@ -353,7 +353,7 @@ public class ServicioInterfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_ContratarPlatoActionPerformed
 
     private void ContratarPostreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContratarPostreActionPerformed
-        CPostre cocinero = new CPostre(mesonPostre, SEPostre, SEPostre, SCPostre, entraP, saleP, servicio);
+        CPostre cocinero = new CPostre(mesonPostre, SEPostre, SEPostre, SCPostre,tiempo, entraP, saleP, servicio);
         if(!"".equals(CocinerosPostres.getText()) && Integer.parseInt(CocinerosPostres.getText()) < 2 &&
                 Integer.parseInt(CocinerosPostres.getText()) > 0 ){
             cocinero.contratar(Integer.parseInt(CocinerosPostres.getText()));
@@ -365,7 +365,7 @@ public class ServicioInterfaz extends javax.swing.JFrame {
 
     private void DespedirMesoneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DespedirMesoneroActionPerformed
         Mesonero mesonero = new Mesonero(SEComida, SPComida, SCComida, entraC, saleC, SEEntrada, SPEntrada, SCEntrada, entraE, saleE,
-                SEPlato, SPPlato, SCPlato, entraPF, salePF, SEPostre, SPPostre, SCPostre, entraP, saleP, servicio, mesonEntradas, mesonPlato, mesonPostre, mesonComida);
+                SEPlato, SPPlato, SCPlato, entraPF, salePF, SEPostre, SPPostre, SCPostre, entraP, saleP, servicio,tiempo, mesonEntradas, mesonPlato, mesonPostre, mesonComida);
         if(!"".equals(Mesoneros.getText()) && Integer.parseInt(Mesoneros.getText()) <= 6 &&
                 Integer.parseInt(Mesoneros.getText()) > 0 ){
             mesonero.despedir(Integer.parseInt(Mesoneros.getText()));
@@ -376,7 +376,7 @@ public class ServicioInterfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_DespedirMesoneroActionPerformed
 
     private void DespedirPostreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DespedirPostreActionPerformed
-        CPostre cocinero = new CPostre(mesonPostre, SEPostre, SEPostre, SCPostre, entraP, saleP, servicio);
+        CPostre cocinero = new CPostre(mesonPostre, SEPostre, SEPostre, SCPostre,tiempo, entraP, saleP, servicio);
         if(!"".equals(CocinerosPostres.getText()) && Integer.parseInt(CocinerosPostres.getText()) <= 2 &&
                 Integer.parseInt(CocinerosPostres.getText()) > 0 ){
             cocinero.despedir(Integer.parseInt(CocinerosPostres.getText()));

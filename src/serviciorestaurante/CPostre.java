@@ -19,8 +19,8 @@ public class CPostre extends Cocinero{
     private int mesonPostre[];
     private boolean ejecutar = true;
 
-    public CPostre(int mesonPostre[], Semaphore SE, Semaphore SP, Semaphore SC, int entra, int sale, ServicioInterfaz interfaz) {
-        super(SE, SP, SC, 0.30, 1, entra, sale, interfaz);
+    public CPostre(int mesonPostre[], Semaphore SE, Semaphore SP, Semaphore SC, long tiempo, int entra, int sale, ServicioInterfaz interfaz) {
+        super(SE, SP, SC, tiempo, 0.30, entra, sale, interfaz);
         this.mesonPostre = mesonPostre;
     }
     
@@ -33,7 +33,7 @@ public class CPostre extends Cocinero{
                 cocinar();
                 SE.release();
                 SC.release();
-                CPostre.sleep((long)(1000*getTiempo()));
+                CPostre.sleep((long)(tiempo*taza));
             } catch (InterruptedException ex) {
                 Logger.getLogger(CPostre.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -50,9 +50,9 @@ public class CPostre extends Cocinero{
     public void contratar(int cant){ //meter cocineros, la cantidad vendra de la interfaz
         for (int j = 0; j < cant; j++){
             boolean contratado = false;
-            for (int i = 0; i<2;i++){
+            for (int i = 0; i<ServicioRestaurant.maxCantPostre;i++){
                 if(CPostres[i] == null && !contratado){
-                    CPostres[i] = new CPostre(mesonPostre, SE, SP, SC, entra, sale, servicio);
+                    CPostres[i] = new CPostre(mesonPostre, SE, SP, SC,tiempo, entra, sale, servicio);
                     CPostres[i].start();
                     contratado = true;
                     int nuevo = Integer.parseInt(this.servicio.getCocinerosPostres().getText())+1;
@@ -67,7 +67,7 @@ public class CPostre extends Cocinero{
     public void despedir(int cant){
         for (int j = 0; j < cant; j++){
             boolean despedido = false;
-            for (int i = 0; i<2;i++){
+            for (int i = 0; i<ServicioRestaurant.maxCantPostre;i++){
                 if(CPostres[i] == null && !despedido){
                     CPostres[i].ejecutar = false;
                     CPostres[i] = null;

@@ -23,7 +23,7 @@ import serviciorestaurante.ServicioInterfaz; //interfaz
  */
 public class ServicioRestaurant { // ojo que esta es la clase principal donde se inicializara el programa y guardara lo importante
     //Cantidades del archivo
-    static public int tiempo;
+    static public long tiempo;
     static public int maxMesonEntradas;
     static public int maxMesonPlatos;
     static public int maxMesonPostres;
@@ -110,19 +110,19 @@ public class ServicioRestaurant { // ojo que esta es la clase principal donde se
         
         //comenzamos las cantidades iniciales
         for(int i = 0; i < cantInicialEntrada; i++){
-            CEntradas[i] = new CEntrada(mesonEntradas, SEEntrada, SEEntrada, SCEntrada, entraE, saleE, servicio);
+            CEntradas[i] = new CEntrada(mesonEntradas, SEEntrada, SEEntrada, SCEntrada,tiempo, entraE, saleE, servicio);
             CEntradas[i].start();
         }
         servicio.getCocinerosEntradas().setText(Integer.toString(cantInicialEntrada)); //la cantidad inicial
 
         for(int i = 0; i < cantInicialPF; i++){
-            CPlato[i] = new CPlatoFuerte(mesonPlato, SEPlato, SEPlato, SCPlato, entraPF, salePF, servicio);
+            CPlato[i] = new CPlatoFuerte(mesonPlato, SEPlato, SEPlato, SCPlato, tiempo, entraPF, salePF, servicio);
             CPlato[i].start();
             //set numero en interfaz
         }
         servicio.getCocinerosPlatos().setText(Integer.toString(cantInicialPF));
         for(int i = 0; i < cantInicialPostres; i++){
-            CPostres[i] = new CPostre(mesonPostre, SEPostre, SEPostre, SCPostre, entraP, saleP, servicio);
+            CPostres[i] = new CPostre(mesonPostre, SEPostre, SEPostre, SCPostre,tiempo, entraP, saleP, servicio);
             CPostres[i].start();
             //set numero en interfaz
         }
@@ -130,7 +130,7 @@ public class ServicioRestaurant { // ojo que esta es la clase principal donde se
 
         for(int i = 0; i < cantInicialMesoneros; i++){
             Mesoneros[i] = new Mesonero(SEComida, SPComida, SCComida, entraC, saleC, SEEntrada, SPEntrada, SCEntrada, entraE, saleE,
-                SEPlato, SPPlato, SCPlato, entraPF, salePF, SEPostre, SPPostre, SCPostre, entraP, saleP, servicio, mesonEntradas, mesonPlato, mesonPostre, mesonComida);
+                SEPlato, SPPlato, SCPlato, entraPF, salePF, SEPostre, SPPostre, SCPostre, entraP, saleP, servicio,tiempo, mesonEntradas, mesonPlato, mesonPostre, mesonComida);
         Mesoneros[i].start();
         }
         

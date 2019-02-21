@@ -27,7 +27,6 @@ public class JefeMesoneros extends Thread{
     public void run() {
         while(true){
             try {
-                //necesita adquirir el tiempo y su estado
                 this.setEscribiendo(false);
                 this.sleep(1);
                 this.setEscribiendo(true);

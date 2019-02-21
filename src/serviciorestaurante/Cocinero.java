@@ -14,13 +14,13 @@ public class Cocinero extends Thread{
     protected Semaphore SE;
     protected Semaphore SP;
     protected Semaphore SC;
-    protected double tiempo; //el tiempo que le toma producir
-    protected int taza; //taza de produccion, ej: 1 por hora y eso
+    protected long tiempo; //el tiempo que le toma producir
+    protected double taza; //taza de produccion, ej: 1 por hora y eso
     protected int entra; //posicion de entrada
     protected int sale; //posicion cuando sale
     protected ServicioInterfaz servicio;
     
-    public Cocinero(Semaphore SE, Semaphore SP, Semaphore SC, double tiempo,int taza, int entra, int sale, ServicioInterfaz servicio){
+    public Cocinero(Semaphore SE, Semaphore SP, Semaphore SC, long tiempo,double taza, int entra, int sale, ServicioInterfaz servicio){
         this.SE = SE;
         this.SP = SP;
         this.SC = SC;
@@ -43,7 +43,7 @@ public class Cocinero extends Thread{
         return SC;
     }
 
-    public double getTiempo() {
+    public long getTiempo() {
         return tiempo;
     }
 
@@ -71,7 +71,7 @@ public class Cocinero extends Thread{
         this.SC = SC;
     }
 
-    public void setTiempo(double tiempo) {
+    public void setTiempo(long tiempo) {
         this.tiempo = tiempo;
     }
 

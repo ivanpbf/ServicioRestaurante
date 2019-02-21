@@ -16,8 +16,8 @@ public class CEntrada extends Cocinero{
     private int mesonEntradas[];
     private boolean ejecutar = true;
 
-    public CEntrada(int mesonEntradas[], Semaphore SE, Semaphore SP, Semaphore SC, int entra, int sale, ServicioInterfaz interfaz) {
-        super(SE, SP, SC, 0.25, 1, entra, sale, interfaz);
+    public CEntrada(int mesonEntradas[], Semaphore SE, Semaphore SP, Semaphore SC, long tiempo, int entra, int sale, ServicioInterfaz interfaz) {
+        super(SE, SP, SC, tiempo, 0.25, entra, sale, interfaz); //0.25 es la taza
         //0.25 es el tiempo que le toma producir [1] 
         this.mesonEntradas = mesonEntradas;
     }
@@ -31,7 +31,7 @@ public class CEntrada extends Cocinero{
                 cocinar();
                 SE.release();
                 SC.release();
-                CEntrada.sleep((long)(1000*getTiempo())); //esto lo verificamos con la interfaz
+                CEntrada.sleep((long)(taza*tiempo)); //esto lo verificamos con la interfaz
             } catch (InterruptedException ex) {
                 Logger.getLogger(CEntrada.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -49,9 +49,9 @@ public class CEntrada extends Cocinero{
     public void contratar(int cant){ //meter cocineros, la cantidad vendra de la interfaz
         for (int j = 0; j < cant; j++){
             boolean contratado = false;
-            for (int i = 0; i<3;i++){
+            for (int i = 0; i<ServicioRestaurant.maxCantEntrada;i++){
                 if(CEntradas[i] == null && !contratado){
-                    CEntradas[i] = new CEntrada(mesonEntradas, SE, SP, SC, entra, sale, servicio);
+                    CEntradas[i] = new CEntrada(mesonEntradas, SE, SP, SC,tiempo, entra, sale, servicio);
                     CEntradas[i].start();
                     contratado = true;
                     int nuevo = Integer.parseInt(this.servicio.getCocinerosEntradas().getText())+1;
@@ -67,7 +67,7 @@ public class CEntrada extends Cocinero{
     public void despedir(int cant){
         for (int j = 0; j < cant; j++){
             boolean despedido = false;
-            for (int i = 0; i<3;i++){
+            for (int i = 0; i<ServicioRestaurant.maxCantEntrada;i++){
                 if(CEntradas[i] == null && !despedido){
                     CEntradas[i].ejecutar = false;
                     CEntradas[i] = null;

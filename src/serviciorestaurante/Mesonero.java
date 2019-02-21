@@ -46,13 +46,13 @@ public class Mesonero extends Thread{
     private int mesonPostre[];
     private int mesonComida[]; //digo que seria como el total?
     
-    private double tiempo;
+    private long tiempo;
     private boolean ejecutar = true;
 
 
     public Mesonero(Semaphore SEComida, Semaphore SPComida, Semaphore SCComida, int entraC, int saleC, Semaphore SEEntrada, Semaphore SPEntrada, Semaphore SCEntrada, int entraE, int saleE,
             Semaphore SEPlato, Semaphore SPPlato, Semaphore SCPlato, int entraPF, int salePF, Semaphore SEPostre, Semaphore SPPostre, Semaphore SCPostre, int entraP, int saleP,
-            ServicioInterfaz servicio, int[] mesonEntradas, int[] mesonPlato, int[] mesonPostre, int[] mesonComida) {
+            ServicioInterfaz servicio,long tiempo, int[] mesonEntradas, int[] mesonPlato, int[] mesonPostre, int[] mesonComida) {
         this.SEComida = SEComida;
         this.SPComida = SPComida;
         this.SCComida = SCComida;
@@ -78,7 +78,7 @@ public class Mesonero extends Thread{
         this.mesonPlato = mesonPlato;
         this.mesonPostre = mesonPostre;
         this.mesonComida = mesonComida;
-        this.tiempo = 0.15;
+        this.tiempo = tiempo;
     }
 
     @Override
@@ -147,10 +147,10 @@ public class Mesonero extends Thread{
     public void contratar(int cant){ //meter cocineros, la cantidad vendra de la interfaz
         for (int j = 0; j < cant; j++){
             boolean contratado = false;
-            for (int i = 0; i<6;i++){
+            for (int i = 0; i<ServicioRestaurant.cantMaxMesoneros;i++){
                 if(Mesoneros[i] == null && !contratado){
                     Mesoneros[i] = new Mesonero(SEComida, SPComida, SCComida, entraC, saleC, SEEntrada, SPEntrada, SCEntrada, entraE, saleE, SEPlato, SPPlato, 
-                            SCPlato, entraPF, salePF, SEPostre, SPPostre, SCPostre, entraP, saleP, servicio, mesonEntradas, mesonPlato, mesonPostre, mesonComida);
+                            SCPlato, entraPF, salePF, SEPostre, SPPostre, SCPostre, entraP, saleP, servicio,tiempo, mesonEntradas, mesonPlato, mesonPostre, mesonComida);
                     Mesoneros[i].start();
                     contratado = true;
                     int nuevo = Integer.parseInt(this.servicio.getMesoneros().getText())+1;
@@ -166,7 +166,7 @@ public class Mesonero extends Thread{
     public void despedir(int cant){
         for (int j = 0; j < cant; j++){
             boolean despedido = false;
-            for (int i = 0; i<6;i++){
+            for (int i = 0; i<ServicioRestaurant.cantMaxMesoneros;i++){
                 if(Mesoneros[i] == null && !despedido){
                     Mesoneros[i].ejecutar = false;
                     Mesoneros[i] = null;
