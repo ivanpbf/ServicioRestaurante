@@ -77,7 +77,7 @@ public class Gerente extends Thread{
     public void descansar(){
         try {
             Random r = new Random();
-            double random = 0.45 + (2 - 0.45) * r.nextDouble();
+            double random = 0.25 + (0.45 - 0.25) * r.nextDouble();
             this.servicio.getGerente().setText("Descansando");
             this.sleep((long) random);
             this.servicio.getGerente().setText("Revisando");
