@@ -271,6 +271,11 @@ public class ServicioInterfaz extends javax.swing.JFrame {
         Iniciar.setBackground(new java.awt.Color(51, 255, 51));
         Iniciar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Iniciar.setText("INICIAR");
+        Iniciar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IniciarActionPerformed(evt);
+            }
+        });
         getContentPane().add(Iniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 575, -1, 30));
 
         jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/restaurant-766050_960_720.jpg"))); // NOI18N
@@ -385,6 +390,25 @@ public class ServicioInterfaz extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "No se puede contratar mas Cocineros de Postres.");
         }
     }//GEN-LAST:event_DespedirPostreActionPerformed
+
+    private void IniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IniciarActionPerformed
+        for(int i = 0; i < cantInicialEntrada; i++){
+            CEntradas[i].start();
+        }
+        for(int i = 0; i < cantInicialPF; i++){
+            CPlato[i].start();
+            //set numero en interfaz
+        }
+        for(int i = 0; i < cantInicialPostres; i++){
+            CPostres[i].start();
+            //set numero en interfaz
+        }
+        for(int i = 0; i < cantInicialMesoneros; i++){
+            CMesoneros[i].start();
+        }
+        jefemesoneros.start();
+        gerente.start();
+    }//GEN-LAST:event_IniciarActionPerformed
 
     /**
      * @param args the command line arguments

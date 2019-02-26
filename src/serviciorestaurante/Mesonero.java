@@ -8,7 +8,7 @@ package serviciorestaurante;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import static serviciorestaurante.ServicioRestaurant.Mesoneros;
+import static serviciorestaurante.ServicioRestaurant.CMesoneros;
 /**
  *
  * @author Ivan
@@ -148,11 +148,11 @@ public class Mesonero extends Thread{
     public void contratar(){ //meter cocineros, la cantidad vendra de la interfaz
             boolean contratado = false;
             for (int i = 0; i<ServicioRestaurant.cantMaxMesoneros;i++){
-                if(Mesoneros[i] == null && !contratado){
-                    Mesoneros[i] = new Mesonero(SEComida, SPComida, SCComida, entraC, saleC, SEEntrada, SPEntrada, SCEntrada, entraE, saleE, SEPlato, SPPlato, 
+                if(CMesoneros[i] == null && !contratado){
+                    CMesoneros[i] = new Mesonero(SEComida, SPComida, SCComida, entraC, saleC, SEEntrada, SPEntrada, SCEntrada, entraE, saleE, SEPlato, SPPlato, 
                             SCPlato, entraPF, salePF, SEPostre, SPPostre, SCPostre, entraP, saleP, servicio,tiempo, mesonEntradas, mesonPlato, mesonPostre, mesonComida);
-                    Mesoneros[i].ejecutar = true;
-                    Mesoneros[i].start();
+                    CMesoneros[i].ejecutar = true;
+                    CMesoneros[i].start();
                     contratado = true;
                     int nuevo = Integer.parseInt(this.servicio.getMesoneros().getText())+1;
                     this.servicio.getMesoneros().setText(Integer.toString(nuevo));
@@ -166,9 +166,9 @@ public class Mesonero extends Thread{
     public void despedir(){
             boolean despedido = false;
             for (int i = 0; i<ServicioRestaurant.cantMaxMesoneros;i++){
-                if(Mesoneros[i] != null && !despedido){
-                    Mesoneros[i].ejecutar = false;
-                    Mesoneros[i] = null;
+                if(CMesoneros[i] != null && !despedido){
+                    CMesoneros[i].ejecutar = false;
+                    CMesoneros[i] = null;
                     despedido = true;
                     int nuevo = Integer.parseInt(this.servicio.getMesoneros().getText())-1;
                     this.servicio.getMesoneros().setText(Integer.toString(nuevo));

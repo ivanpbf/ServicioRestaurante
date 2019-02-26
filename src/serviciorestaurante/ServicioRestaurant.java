@@ -39,7 +39,7 @@ public class ServicioRestaurant { // ojo que esta es la clase principal donde se
     static public CEntrada CEntradas [];
     static public CPlatoFuerte CPlato [];
     static public CPostre CPostres [];
-    static public Mesonero Mesoneros [];
+    static public Mesonero[] CMesoneros;
     //Mesones
     static public int mesonEntradas [];
     static public int mesonPlato [];
@@ -98,7 +98,7 @@ public class ServicioRestaurant { // ojo que esta es la clase principal donde se
         CEntradas = new CEntrada[maxCantEntrada];
         CPlato = new CPlatoFuerte[maxCantPF];
         CPostres = new CPostre[maxCantPostre];
-        Mesoneros = new Mesonero[cantMaxMesoneros];
+        CMesoneros = new Mesonero[cantMaxMesoneros];
         mesonEntradas = new int [maxMesonEntradas];
         mesonPlato = new int [maxMesonPlatos];
         mesonPostre = new int [maxMesonPostres];
@@ -115,33 +115,33 @@ public class ServicioRestaurant { // ojo que esta es la clase principal donde se
         //comenzamos las cantidades iniciales
         for(int i = 0; i < cantInicialEntrada; i++){
             CEntradas[i] = new CEntrada(mesonEntradas, SEEntrada, SPEntrada, SCEntrada,tiempo, entraE, saleE, servicio);
-            CEntradas[i].start();
+            //CEntradas[i].start();
         }
         servicio.getCocinerosEntradas().setText(Integer.toString(cantInicialEntrada)); //la cantidad inicial
 
         for(int i = 0; i < cantInicialPF; i++){
             CPlato[i] = new CPlatoFuerte(mesonPlato, SEPlato, SPPlato, SCPlato, tiempo, entraPF, salePF, servicio);
-            CPlato[i].start();
+            //CPlato[i].start();
             //set numero en interfaz
         }
         servicio.getCocinerosPlatos().setText(Integer.toString(cantInicialPF));
         for(int i = 0; i < cantInicialPostres; i++){
             CPostres[i] = new CPostre(mesonPostre, SEPostre, SPPostre, SCPostre,tiempo, entraP, saleP, servicio);
-            CPostres[i].start();
+            //CPostres[i].start();
             //set numero en interfaz
         }
         servicio.getCocinerosPostres().setText(Integer.toString(cantInicialPostres));
 
         for(int i = 0; i < cantInicialMesoneros; i++){
-            Mesoneros[i] = new Mesonero(SEComida, SPComida, SCComida, entraC, saleC, SEEntrada, SPEntrada, SCEntrada, entraE, saleE,
+            CMesoneros[i] = new Mesonero(SEComida, SPComida, SCComida, entraC, saleC, SEEntrada, SPEntrada, SCEntrada, entraE, saleE,
                 SEPlato, SPPlato, SCPlato, entraPF, salePF, SEPostre, SPPostre, SCPostre, entraP, saleP, servicio,tiempo, mesonEntradas, mesonPlato, mesonPostre, mesonComida);
-        Mesoneros[i].start();
+            //Mesoneros[i].start();
         }
         
 
         servicio.getMesoneros().setText(Integer.toString(cantInicialMesoneros));
-        jefemesoneros.start();
-        gerente.start();
+        //jefemesoneros.start();
+        //gerente.start();
      }
     public static int[] leerArchivoDatos(){ //lee las columnas filas y minas predeterminadas
         int[] datos = new int[12];
