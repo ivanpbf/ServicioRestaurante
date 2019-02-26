@@ -100,7 +100,7 @@ public class Mesonero extends Thread{
                 tomarPostre();
                 SEPostre.release();
                 SPPostre.release();
-                this.sleep((long)tiempo);
+                this.sleep((long)1000*tiempo);
                 //luego viene servir
                 SPComida.acquire(1);
                 SEComida.acquire(1);
@@ -115,24 +115,24 @@ public class Mesonero extends Thread{
     
     public void tomarEntrada(){
         mesonEntradas[saleE] = 0;
-        mesonEntradas[(saleE+1)%20] = 0; //esto lo dio en la clase del miercoles 13 
-        mesonEntradas[(saleE+2)%20] = 0;
-        saleE = (saleE+3)%20;
+        mesonEntradas[(saleE+1)%ServicioRestaurant.maxCantEntrada] = 0; //esto lo dio en la clase del miercoles 13 
+        mesonEntradas[(saleE+2)%ServicioRestaurant.maxCantEntrada] = 0;
+        saleE = (saleE+3)%ServicioRestaurant.maxCantEntrada;
         int tomar = Integer.parseInt(this.servicio.getMesonEntradas().getText())-3;
         this.servicio.getMesonEntradas().setText(Integer.toString(tomar));
     }
     
     public void tomarPlatofuerte(){
         mesonPlato[salePF] = 0;
-        mesonPlato[(salePF+1)%30] = 0;
-        saleP = (salePF+2)%30;
+        mesonPlato[(salePF+1)%ServicioRestaurant.maxCantPF] = 0;
+        saleP = (salePF+2)%ServicioRestaurant.maxCantPF;
         int tomar = Integer.parseInt(this.servicio.getMesonPlatos().getText())-2;
         this.servicio.getMesonPlatos().setText(Integer.toString(tomar));
     }
     
     public void tomarPostre(){
         mesonPostre[saleP] = 0;
-        saleP = (saleP+1)%10;
+        saleP = (saleP+1)%ServicioRestaurant.maxCantPostre;
         int tomar = Integer.parseInt(this.servicio.getMesonPostres().getText())-1;
         this.servicio.getMesonPostres().setText(Integer.toString(tomar));
     }
@@ -144,8 +144,7 @@ public class Mesonero extends Thread{
         this.servicio.getComidas().setText(Integer.toString(tomar));
     }
     //luego contratar y despedir
-    public void contratar(int cant){ //meter cocineros, la cantidad vendra de la interfaz
-        for (int j = 0; j < cant; j++){
+    public void contratar(){ //meter cocineros, la cantidad vendra de la interfaz
             boolean contratado = false;
             for (int i = 0; i<ServicioRestaurant.cantMaxMesoneros;i++){
                 if(Mesoneros[i] == null && !contratado){
@@ -160,14 +159,12 @@ public class Mesonero extends Thread{
                     break;
                 }
             }
-        }
     }
     
-    public void despedir(int cant){
-        for (int j = 0; j < cant; j++){
+    public void despedir(){
             boolean despedido = false;
             for (int i = 0; i<ServicioRestaurant.cantMaxMesoneros;i++){
-                if(Mesoneros[i] == null && !despedido){
+                if(Mesoneros[i] != null && !despedido){
                     Mesoneros[i].ejecutar = false;
                     Mesoneros[i] = null;
                     despedido = true;
@@ -179,5 +176,4 @@ public class Mesonero extends Thread{
                 }
             }
         }
-    }
 }

@@ -107,22 +107,26 @@ public class ServicioRestaurant { // ojo que esta es la clase principal donde se
         SPPostre = new Semaphore(mesonPostre.length);
         SPComida = new Semaphore(mesonComida.length);
         servicio.setVisible(true);
-        
+        //iniciando interfaz
+        servicio.getMesonEntradas().setText("0");
+        servicio.getMesonPlatos().setText("0");
+        servicio.getMesonPostres().setText("0");
+        servicio.getComidas().setText("0");
         //comenzamos las cantidades iniciales
         for(int i = 0; i < cantInicialEntrada; i++){
-            CEntradas[i] = new CEntrada(mesonEntradas, SEEntrada, SEEntrada, SCEntrada,tiempo, entraE, saleE, servicio);
+            CEntradas[i] = new CEntrada(mesonEntradas, SEEntrada, SPEntrada, SCEntrada,tiempo, entraE, saleE, servicio);
             CEntradas[i].start();
         }
         servicio.getCocinerosEntradas().setText(Integer.toString(cantInicialEntrada)); //la cantidad inicial
 
         for(int i = 0; i < cantInicialPF; i++){
-            CPlato[i] = new CPlatoFuerte(mesonPlato, SEPlato, SEPlato, SCPlato, tiempo, entraPF, salePF, servicio);
+            CPlato[i] = new CPlatoFuerte(mesonPlato, SEPlato, SPPlato, SCPlato, tiempo, entraPF, salePF, servicio);
             CPlato[i].start();
             //set numero en interfaz
         }
         servicio.getCocinerosPlatos().setText(Integer.toString(cantInicialPF));
         for(int i = 0; i < cantInicialPostres; i++){
-            CPostres[i] = new CPostre(mesonPostre, SEPostre, SEPostre, SCPostre,tiempo, entraP, saleP, servicio);
+            CPostres[i] = new CPostre(mesonPostre, SEPostre, SPPostre, SCPostre,tiempo, entraP, saleP, servicio);
             CPostres[i].start();
             //set numero en interfaz
         }
@@ -134,6 +138,7 @@ public class ServicioRestaurant { // ojo que esta es la clase principal donde se
         Mesoneros[i].start();
         }
         
+
         servicio.getMesoneros().setText(Integer.toString(cantInicialMesoneros));
         jefemesoneros.start();
         gerente.start();

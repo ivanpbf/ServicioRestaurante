@@ -17,7 +17,6 @@ import serviciorestaurante.ServicioInterfaz;
  */
 public class CPlatoFuerte extends Cocinero{
     private int[] mesonPlatoFuerte;
-    private boolean ejecutar = true;
 
     public CPlatoFuerte(int mesonPlatoFuerte[], Semaphore SE, Semaphore SP, Semaphore SC,long tiempo, int entra, int sale, ServicioInterfaz interfaz) {
         super(SE, SP, SC, tiempo, 0.33, entra, sale, interfaz);
@@ -26,14 +25,14 @@ public class CPlatoFuerte extends Cocinero{
     
     @Override
     public void run() {
-        while(ejecutar){
+        while(true){
             try {
                 SP.acquire(1);
                 SE.acquire(1);
                 cocinar();
                 SE.release();
                 SC.release();
-                CPlatoFuerte.sleep((long)(tiempo*taza)); //verificar esto
+                CPlatoFuerte.sleep((long)(1000*tiempo*taza)); //verificar esto
             } catch (InterruptedException ex) {
                 Logger.getLogger(CPlatoFuerte.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -42,13 +41,12 @@ public class CPlatoFuerte extends Cocinero{
     
     public void cocinar(){
         mesonPlatoFuerte[entra]=1; //se cocino 1 y se pone en su meson
-        entra = (entra+1)%30; //30 puestos del meson
+        entra = (entra+1)%mesonPlatoFuerte.length; //30 puestos del meson
         int nuevo = Integer.parseInt(this.servicio.getMesonPlatos().getText())+1;
         this.servicio.getMesonPlatos().setText(Integer.toString(nuevo));
     }
     
-    public void contratar(int cant){ //meter cocineros, la cantidad vendra de la interfaz
-        for (int j = 0; j < cant; j++){
+    public void contratar(){ //meter cocineros, la cantidad vendra de la interfaz
             boolean contratado = false;
             for (int i = 0; i<ServicioRestaurant.maxCantPF;i++){
                 if(CPlato[i] == null && !contratado){
@@ -62,15 +60,12 @@ public class CPlatoFuerte extends Cocinero{
                     break;
                 }
             }
-        }
     }
     
-    public void despedir(int cant){ //despedir, cantidad vendra de interfaz
-        for (int j = 0; j < cant; j++){
+    public void despedir(){ //despedir, cantidad vendra de interfaz
             boolean despedido = false;
             for (int i = 0; i<ServicioRestaurant.maxCantPF;i++){
-                if(CPlato[i] == null && !despedido){
-                    CPlato[i].ejecutar = false;
+                if(CPlato[i] != null && !despedido){
                     CPlato[i] = null;
                     despedido = true;
                     int nuevo = Integer.parseInt(this.servicio.getCocinerosPlatos().getText())-1;
@@ -80,7 +75,6 @@ public class CPlatoFuerte extends Cocinero{
                     break;
                 }
             }
-        }
     }
     
 

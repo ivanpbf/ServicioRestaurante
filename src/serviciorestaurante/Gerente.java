@@ -45,7 +45,7 @@ public class Gerente extends Thread{
                     this.servicio.getHorasRestantes().setText(Integer.toString((int) getJefem().getContador()));
                 }
                 SEJefe.release(1);
-                
+                descansar();
             } catch (InterruptedException ex) {
                 Logger.getLogger(Gerente.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -54,7 +54,6 @@ public class Gerente extends Thread{
     }
 
     public void cerrar(){ try {
-        //pagar ordenes?
         int ordenesActuales = 0; //?? creo
         SEComida.acquire(1);
         for(int i = 0; i < 200; i++){ // recordar que es la cantidad en la que lo iniciamos al comienzo
@@ -79,7 +78,7 @@ public class Gerente extends Thread{
             Random r = new Random();
             double random = 0.25 + (0.45 - 0.25) * r.nextDouble();
             this.servicio.getGerente().setText("Descansando");
-            this.sleep((long) random);
+            this.sleep((long)(random*1000*ServicioRestaurant.tiempo));
             this.servicio.getGerente().setText("Revisando");
         } catch (InterruptedException ex) {
             Logger.getLogger(Gerente.class.getName()).log(Level.SEVERE, null, ex);

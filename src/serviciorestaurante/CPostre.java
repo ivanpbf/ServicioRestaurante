@@ -17,7 +17,6 @@ import serviciorestaurante.ServicioInterfaz;
  */
 public class CPostre extends Cocinero{
     private int mesonPostre[];
-    private boolean ejecutar = true;
 
     public CPostre(int mesonPostre[], Semaphore SE, Semaphore SP, Semaphore SC, long tiempo, int entra, int sale, ServicioInterfaz interfaz) {
         super(SE, SP, SC, tiempo, 0.30, entra, sale, interfaz);
@@ -26,14 +25,14 @@ public class CPostre extends Cocinero{
     
     @Override
     public void run() {
-        while(ejecutar){
+        while(true){
             try {
                 SP.acquire(1);
                 SE.acquire(1);
                 cocinar();
                 SE.release();
                 SC.release();
-                CPostre.sleep((long)(tiempo*taza));
+                CPostre.sleep((long)(1000*tiempo*taza));
             } catch (InterruptedException ex) {
                 Logger.getLogger(CPostre.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -42,19 +41,18 @@ public class CPostre extends Cocinero{
     
     public void cocinar(){
         mesonPostre[entra]=1; //se cocino 1 y se pone en su meson
-        entra = (entra+1)%10; //10 puestos del meson
+        entra = (entra+1)%mesonPostre.length; //10 puestos del meson
         int nuevo = Integer.parseInt(this.servicio.getMesonPostres().getText())+1;
         this.servicio.getMesonPostres().setText(Integer.toString(nuevo));
     }
     
-    public void contratar(int cant){ //meter cocineros, la cantidad vendra de la interfaz
-        for (int j = 0; j < cant; j++){
+    public void contratar(){ //meter cocineros, la cantidad vendra de la interfaz
             boolean contratado = false;
             for (int i = 0; i<ServicioRestaurant.maxCantPostre;i++){
                 if(CPostres[i] == null && !contratado){
                     CPostres[i] = new CPostre(mesonPostre, SE, SP, SC,tiempo, entra, sale, servicio);
-                    CPostres[i].start();
                     contratado = true;
+                    CPostres[i].start();
                     int nuevo = Integer.parseInt(this.servicio.getCocinerosPostres().getText())+1;
                     this.servicio.getCocinerosPostres().setText(Integer.toString(nuevo));
                 }
@@ -62,14 +60,11 @@ public class CPostre extends Cocinero{
                     break;
                 }
             }
-        }
     }
-    public void despedir(int cant){
-        for (int j = 0; j < cant; j++){
+    public void despedir(){
             boolean despedido = false;
             for (int i = 0; i<ServicioRestaurant.maxCantPostre;i++){
-                if(CPostres[i] == null && !despedido){
-                    CPostres[i].ejecutar = false;
+                if(CPostres[i] != null && !despedido){
                     CPostres[i] = null;
                     despedido = true;
                     int nuevo = Integer.parseInt(this.servicio.getCocinerosPostres().getText())-1;
@@ -79,7 +74,6 @@ public class CPostre extends Cocinero{
                     break;
                 }
             }
-        }
     }
 
     public int[] getMesonPostre() {

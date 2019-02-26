@@ -28,7 +28,7 @@ public class JefeMesoneros extends Thread{
         while(true){
             try {
                 this.setEscribiendo(false);
-                this.sleep(1);
+                this.sleep(1000*ServicioRestaurant.tiempo);
                 this.setEscribiendo(true);
                 
                 SEJefe.acquire();
@@ -42,7 +42,7 @@ public class JefeMesoneros extends Thread{
     
     public void registrar(){
         try {
-            this.sleep((long)0.05); //pensar
+            this.sleep((long)0.05*1000*ServicioRestaurant.tiempo); //pensar
         } catch (InterruptedException ex) {
             Logger.getLogger(JefeMesoneros.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -14,7 +14,6 @@ import static serviciorestaurante.ServicioRestaurant.CEntradas;
 
 public class CEntrada extends Cocinero{
     private int mesonEntradas[];
-    private boolean ejecutar = true;
 
     public CEntrada(int mesonEntradas[], Semaphore SE, Semaphore SP, Semaphore SC, long tiempo, int entra, int sale, ServicioInterfaz interfaz) {
         super(SE, SP, SC, tiempo, 0.25, entra, sale, interfaz); //0.25 es la taza
@@ -24,14 +23,14 @@ public class CEntrada extends Cocinero{
 
     @Override
     public void run() {
-        while(ejecutar){
+        while(true){
             try {
                 SP.acquire(1);
                 SE.acquire(1);
                 cocinar();
                 SE.release();
                 SC.release();
-                CEntrada.sleep((long)(taza*tiempo)); //esto lo verificamos con la interfaz
+                CEntrada.sleep((long)(tiempo*taza*1000)); //esto lo verificamos con la interfaz
             } catch (InterruptedException ex) {
                 Logger.getLogger(CEntrada.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -40,14 +39,13 @@ public class CEntrada extends Cocinero{
     
     public void cocinar(){
         mesonEntradas[entra]=1; //se cocino 1 y se pone en su meson
-        entra = (entra+1)%20; //20 puestos del meson
+        entra = (entra+1)%mesonEntradas.length; //20 puestos del meson
         int nuevo = Integer.parseInt(this.servicio.getMesonEntradas().getText())+1;
         this.servicio.getMesonEntradas().setText(Integer.toString(nuevo));
     }
     
     //despedir y contratar iran aca
-    public void contratar(int cant){ //meter cocineros, la cantidad vendra de la interfaz
-        for (int j = 0; j < cant; j++){
+    public void contratar(){ //meter cocineros, la cantidad vendra de la interfaz
             boolean contratado = false;
             for (int i = 0; i<ServicioRestaurant.maxCantEntrada;i++){
                 if(CEntradas[i] == null && !contratado){
@@ -61,15 +59,12 @@ public class CEntrada extends Cocinero{
                     break;
                 }
             }
-        }
     }
     
-    public void despedir(int cant){
-        for (int j = 0; j < cant; j++){
+    public void despedir(){
             boolean despedido = false;
             for (int i = 0; i<ServicioRestaurant.maxCantEntrada;i++){
-                if(CEntradas[i] == null && !despedido){
-                    CEntradas[i].ejecutar = false;
+                if(CEntradas[i] != null && !despedido){
                     CEntradas[i] = null;
                     despedido = true;
                     int nuevo = Integer.parseInt(this.servicio.getCocinerosEntradas().getText())-1;
@@ -79,7 +74,6 @@ public class CEntrada extends Cocinero{
                     break;
                 }
             }
-        }
     }
 
     public int[] getMesonEntradas() {
