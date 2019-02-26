@@ -14,20 +14,22 @@ import static serviciorestaurante.ServicioRestaurant.CEntradas;
 
 public class CEntrada extends Cocinero{
     private int mesonEntradas[];
+    volatile boolean ejecutar; //esto lo usamos para que al despedir o contratar lo pongamos en ejecucion
 
     public CEntrada(int mesonEntradas[], Semaphore SE, Semaphore SP, Semaphore SC, long tiempo, int entra, int sale, ServicioInterfaz interfaz) {
         super(SE, SP, SC, tiempo, 0.25, entra, sale, interfaz); //0.25 es la taza
         //0.25 es el tiempo que le toma producir [1] 
         this.mesonEntradas = mesonEntradas;
+        ejecutar = true;
     }
 
     @Override
     public void run() {
-        while(true){
+        while(ejecutar){
             try {
                 SP.acquire(1);
                 SE.acquire(1);
-                cocinar();
+                    cocinar();
                 SE.release();
                 SC.release();
                 CEntrada.sleep((long)(tiempo*taza*1000)); //esto lo verificamos con la interfaz
@@ -50,6 +52,7 @@ public class CEntrada extends Cocinero{
             for (int i = 0; i<ServicioRestaurant.maxCantEntrada;i++){
                 if(CEntradas[i] == null && !contratado){
                     CEntradas[i] = new CEntrada(mesonEntradas, SE, SP, SC,tiempo, entra, sale, servicio);
+                    CEntradas[i].ejecutar = true;
                     CEntradas[i].start();
                     contratado = true;
                     int nuevo = Integer.parseInt(this.servicio.getCocinerosEntradas().getText())+1;
@@ -65,6 +68,7 @@ public class CEntrada extends Cocinero{
             boolean despedido = false;
             for (int i = 0; i<ServicioRestaurant.maxCantEntrada;i++){
                 if(CEntradas[i] != null && !despedido){
+                    CEntradas[i].ejecutar = false;
                     CEntradas[i] = null;
                     despedido = true;
                     int nuevo = Integer.parseInt(this.servicio.getCocinerosEntradas().getText())-1;

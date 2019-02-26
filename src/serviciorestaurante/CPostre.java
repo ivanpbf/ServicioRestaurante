@@ -17,10 +17,12 @@ import serviciorestaurante.ServicioInterfaz;
  */
 public class CPostre extends Cocinero{
     private int mesonPostre[];
+    volatile boolean ejecutar;
 
     public CPostre(int mesonPostre[], Semaphore SE, Semaphore SP, Semaphore SC, long tiempo, int entra, int sale, ServicioInterfaz interfaz) {
         super(SE, SP, SC, tiempo, 0.30, entra, sale, interfaz);
         this.mesonPostre = mesonPostre;
+        ejecutar = true;
     }
     
     @Override
@@ -29,7 +31,7 @@ public class CPostre extends Cocinero{
             try {
                 SP.acquire(1);
                 SE.acquire(1);
-                cocinar();
+                    cocinar();
                 SE.release();
                 SC.release();
                 CPostre.sleep((long)(1000*tiempo*taza));
@@ -52,6 +54,7 @@ public class CPostre extends Cocinero{
                 if(CPostres[i] == null && !contratado){
                     CPostres[i] = new CPostre(mesonPostre, SE, SP, SC,tiempo, entra, sale, servicio);
                     contratado = true;
+                    CPostres[i].ejecutar = true;
                     CPostres[i].start();
                     int nuevo = Integer.parseInt(this.servicio.getCocinerosPostres().getText())+1;
                     this.servicio.getCocinerosPostres().setText(Integer.toString(nuevo));
@@ -65,6 +68,7 @@ public class CPostre extends Cocinero{
             boolean despedido = false;
             for (int i = 0; i<ServicioRestaurant.maxCantPostre;i++){
                 if(CPostres[i] != null && !despedido){
+                    CPostres[i].ejecutar = false;
                     CPostres[i] = null;
                     despedido = true;
                     int nuevo = Integer.parseInt(this.servicio.getCocinerosPostres().getText())-1;

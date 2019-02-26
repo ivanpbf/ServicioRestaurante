@@ -17,15 +17,17 @@ import serviciorestaurante.ServicioInterfaz;
  */
 public class CPlatoFuerte extends Cocinero{
     private int[] mesonPlatoFuerte;
+    volatile boolean ejecutar;
 
     public CPlatoFuerte(int mesonPlatoFuerte[], Semaphore SE, Semaphore SP, Semaphore SC,long tiempo, int entra, int sale, ServicioInterfaz interfaz) {
         super(SE, SP, SC, tiempo, 0.33, entra, sale, interfaz);
         this.mesonPlatoFuerte = mesonPlatoFuerte;
+        ejecutar = true;
     }
     
     @Override
     public void run() {
-        while(true){
+        while(ejecutar){
             try {
                 SP.acquire(1);
                 SE.acquire(1);
@@ -51,6 +53,7 @@ public class CPlatoFuerte extends Cocinero{
             for (int i = 0; i<ServicioRestaurant.maxCantPF;i++){
                 if(CPlato[i] == null && !contratado){
                     CPlato[i] = new CPlatoFuerte(mesonPlatoFuerte, SE, SP, SC,tiempo, entra, sale, servicio);
+                    CPlato[i].ejecutar = true;
                     CPlato[i].start();
                     contratado = true;
                     int nuevo = Integer.parseInt(this.servicio.getCocinerosPlatos().getText())+1;
@@ -66,6 +69,7 @@ public class CPlatoFuerte extends Cocinero{
             boolean despedido = false;
             for (int i = 0; i<ServicioRestaurant.maxCantPF;i++){
                 if(CPlato[i] != null && !despedido){
+                    CPlato[i].ejecutar = false;
                     CPlato[i] = null;
                     despedido = true;
                     int nuevo = Integer.parseInt(this.servicio.getCocinerosPlatos().getText())-1;

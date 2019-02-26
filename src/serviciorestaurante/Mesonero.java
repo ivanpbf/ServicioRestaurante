@@ -47,7 +47,7 @@ public class Mesonero extends Thread{
     private int mesonComida[]; //digo que seria como el total?
     
     private long tiempo;
-    private boolean ejecutar = true;
+    volatile boolean ejecutar = true;
 
 
     public Mesonero(Semaphore SEComida, Semaphore SPComida, Semaphore SCComida, int entraC, int saleC, Semaphore SEEntrada, Semaphore SPEntrada, Semaphore SCEntrada, int entraE, int saleE,
@@ -79,6 +79,7 @@ public class Mesonero extends Thread{
         this.mesonPostre = mesonPostre;
         this.mesonComida = mesonComida;
         this.tiempo = tiempo;
+        ejecutar = true;
     }
 
     @Override
@@ -150,6 +151,7 @@ public class Mesonero extends Thread{
                 if(Mesoneros[i] == null && !contratado){
                     Mesoneros[i] = new Mesonero(SEComida, SPComida, SCComida, entraC, saleC, SEEntrada, SPEntrada, SCEntrada, entraE, saleE, SEPlato, SPPlato, 
                             SCPlato, entraPF, salePF, SEPostre, SPPostre, SCPostre, entraP, saleP, servicio,tiempo, mesonEntradas, mesonPlato, mesonPostre, mesonComida);
+                    Mesoneros[i].ejecutar = true;
                     Mesoneros[i].start();
                     contratado = true;
                     int nuevo = Integer.parseInt(this.servicio.getMesoneros().getText())+1;
