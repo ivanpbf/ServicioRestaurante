@@ -344,7 +344,7 @@ public class ServicioInterfaz extends javax.swing.JFrame {
     private void ContratarPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContratarPlatoActionPerformed
         CPlatoFuerte cocinero = new CPlatoFuerte(mesonPlato, SEPlato, SEPlato, SCPlato,tiempo, entraPF, salePF, servicio);
         if(!"".equals(CocinerosPlatos.getText()) && Integer.parseInt(CocinerosPlatos.getText()) < maxCantPF &&
-                Integer.parseInt(CocinerosPlatos.getText()) > 0 ){
+                Integer.parseInt(CocinerosPlatos.getText()) >= 0 ){
             cocinero.contratar();
         }
         else{
