@@ -44,8 +44,10 @@ public class CPostre extends Cocinero{
     public void cocinar(){
         mesonPostre[entra]=1; //se cocino 1 y se pone en su meson
         entra = (entra+1)%mesonPostre.length; //10 puestos del meson
+       
         int nuevo = Integer.parseInt(this.servicio.getMesonPostres().getText())+1;
         this.servicio.getMesonPostres().setText(Integer.toString(nuevo));
+        
     }
     
     public void contratar(){ //meter cocineros, la cantidad vendra de la interfaz

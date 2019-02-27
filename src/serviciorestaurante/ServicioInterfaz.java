@@ -298,7 +298,7 @@ public class ServicioInterfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_CocinerosPlatosActionPerformed
 
     private void DespedirPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DespedirPlatoActionPerformed
-       CPlatoFuerte cocinero = new CPlatoFuerte(mesonPlato, SEPlato, SEPlato, SCPlato,tiempo, entraPF, salePF, servicio);
+       CPlatoFuerte cocinero = new CPlatoFuerte(mesonPlato, SEPlato, SPPlato, SCPlato,tiempo, entraPF, salePF, servicio);
         if(!"".equals(CocinerosPlatos.getText()) && Integer.parseInt(CocinerosPlatos.getText()) <= maxCantPF &&
                 Integer.parseInt(CocinerosPlatos.getText()) > 0 ){
             cocinero.despedir();
@@ -325,7 +325,7 @@ public class ServicioInterfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_ContratarMesoneroActionPerformed
 
     private void ContratarEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContratarEntradaActionPerformed
-        CEntrada cocinero = new CEntrada(mesonEntradas, SEEntrada, SEEntrada, SCEntrada,tiempo, entraE, saleE, servicio);
+        CEntrada cocinero = new CEntrada(mesonEntradas, SEEntrada, SPEntrada, SCEntrada,tiempo, entraE, saleE, servicio);
         if(!"".equals(CocinerosEntradas.getText()) && Integer.parseInt(CocinerosEntradas.getText()) < maxCantEntrada &&
                 Integer.parseInt(CocinerosEntradas.getText()) >= 0 ){
             cocinero.contratar();
@@ -336,7 +336,7 @@ public class ServicioInterfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_ContratarEntradaActionPerformed
 
     private void DespedirEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DespedirEntradaActionPerformed
-        CEntrada cocinero = new CEntrada(mesonEntradas, SEEntrada, SEEntrada, SCEntrada,tiempo, entraE, saleE, servicio);
+        CEntrada cocinero = new CEntrada(mesonEntradas, SEEntrada, SPEntrada, SCEntrada,tiempo, entraE, saleE, servicio);
         if(!"".equals(CocinerosEntradas.getText()) && Integer.parseInt(CocinerosEntradas.getText()) <= maxCantEntrada &&
                 Integer.parseInt(CocinerosEntradas.getText()) > 0 ){
             cocinero.despedir();
@@ -347,7 +347,7 @@ public class ServicioInterfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_DespedirEntradaActionPerformed
 
     private void ContratarPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContratarPlatoActionPerformed
-        CPlatoFuerte cocinero = new CPlatoFuerte(mesonPlato, SEPlato, SEPlato, SCPlato,tiempo, entraPF, salePF, servicio);
+        CPlatoFuerte cocinero = new CPlatoFuerte(mesonPlato, SEPlato, SPPlato, SCPlato,tiempo, entraPF, salePF, servicio);
         if(!"".equals(CocinerosPlatos.getText()) && Integer.parseInt(CocinerosPlatos.getText()) < maxCantPF &&
                 Integer.parseInt(CocinerosPlatos.getText()) >= 0 ){
             cocinero.contratar();
@@ -358,7 +358,7 @@ public class ServicioInterfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_ContratarPlatoActionPerformed
 
     private void ContratarPostreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContratarPostreActionPerformed
-        CPostre cocinero = new CPostre(mesonPostre, SEPostre, SEPostre, SCPostre,tiempo, entraP, saleP, servicio);
+        CPostre cocinero = new CPostre(mesonPostre, SEPostre, SPPostre, SCPostre,tiempo, entraP, saleP, servicio);
         if(!"".equals(CocinerosPostres.getText()) && Integer.parseInt(CocinerosPostres.getText()) < maxCantPostre &&
                 Integer.parseInt(CocinerosPostres.getText()) >= 0 ){
             cocinero.contratar();
@@ -381,7 +381,7 @@ public class ServicioInterfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_DespedirMesoneroActionPerformed
 
     private void DespedirPostreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DespedirPostreActionPerformed
-        CPostre cocinero = new CPostre(mesonPostre, SEPostre, SEPostre, SCPostre,tiempo, entraP, saleP, servicio);
+        CPostre cocinero = new CPostre(mesonPostre, SEPostre, SPPostre, SCPostre,tiempo, entraP, saleP, servicio);
         if(!"".equals(CocinerosPostres.getText()) && Integer.parseInt(CocinerosPostres.getText()) <= maxCantPostre &&
                 Integer.parseInt(CocinerosPostres.getText()) > 0 ){
             cocinero.despedir();

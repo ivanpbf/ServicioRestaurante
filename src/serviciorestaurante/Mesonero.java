@@ -140,7 +140,8 @@ public class Mesonero extends Thread{
     
     public void servir(){
         mesonComida[entraC] = 1;
-        entraC = (entraC+1)%100;
+        entraC = (entraC+1)%mesonComida.length;
+      
         int tomar = Integer.parseInt(this.servicio.getComidas().getText())+1;
         this.servicio.getComidas().setText(Integer.toString(tomar));
     }

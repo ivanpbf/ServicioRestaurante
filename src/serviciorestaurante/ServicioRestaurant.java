@@ -125,6 +125,7 @@ public class ServicioRestaurant { // ojo que esta es la clase principal donde se
             //set numero en interfaz
         }
         servicio.getCocinerosPlatos().setText(Integer.toString(cantInicialPF));
+         System.out.println(cantInicialPostres);
         for(int i = 0; i < cantInicialPostres; i++){
             CPostres[i] = new CPostre(mesonPostre, SEPostre, SPPostre, SCPostre,tiempo, entraP, saleP, servicio);
             //CPostres[i].start();

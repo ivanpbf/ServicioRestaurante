@@ -56,18 +56,19 @@ public class Gerente extends Thread{
     public void cerrar(){ try {
         int ordenesActuales = 0; //?? creo
         SEComida.acquire(1);
-        for(int i = 0; i < 200; i++){ // recordar que es la cantidad en la que lo iniciamos al comienzo
+        for(int i = 0; i < mesonComida.length; i++){ // recordar que es la cantidad en la que lo iniciamos al comienzo
             if(mesonComida[i] == 1){
                 mesonComida[i] = 0;
                 ordenesActuales++;
             }
         }
         ordenesAtendidas = ordenesAtendidas + ordenesActuales;
-        servicio.getComidas().setText(Integer.toString(ordenesAtendidas));
+        servicio.getComidas().setText("0");
         setSaleC(0);
         setEntraC(0);
         SEComida.release(1);
-        SPComida.release(ordenesActuales);
+        
+        SPComida.release(ordenesAtendidas);
         } catch (InterruptedException ex) {
             Logger.getLogger(Gerente.class.getName()).log(Level.SEVERE, null, ex);
         }

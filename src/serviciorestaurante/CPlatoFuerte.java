@@ -29,11 +29,11 @@ public class CPlatoFuerte extends Cocinero{
     public void run() {
         while(ejecutar){
             try {
-                SP.acquire(1);
-                SE.acquire(1);
+                this.SP.acquire(1);
+                this.SE.acquire(1);
                 cocinar();
-                SE.release();
-                SC.release();
+                this.SE.release();
+                this.SC.release();
                 CPlatoFuerte.sleep((long)(1000*tiempo*taza)); //verificar esto
             } catch (InterruptedException ex) {
                 Logger.getLogger(CPlatoFuerte.class.getName()).log(Level.SEVERE, null, ex);
@@ -44,6 +44,7 @@ public class CPlatoFuerte extends Cocinero{
     public void cocinar(){
         mesonPlatoFuerte[entra]=1; //se cocino 1 y se pone en su meson
         entra = (entra+1)%mesonPlatoFuerte.length; //30 puestos del meson
+        
         int nuevo = Integer.parseInt(this.servicio.getMesonPlatos().getText())+1;
         this.servicio.getMesonPlatos().setText(Integer.toString(nuevo));
     }
