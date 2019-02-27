@@ -74,7 +74,7 @@ public class ServicioRestaurant { // ojo que esta es la clase principal donde se
     //iniciar el gerente y cronometrador
     static public Semaphore SEJefe = new Semaphore(1);
     static public JefeMesoneros jefemesoneros = new JefeMesoneros(1, SEJefe, servicio); //inicia en 1?
-    static public Gerente gerente = new Gerente(mesonComida, SEComida, SPComida, SCComida, SEJefe, entraC, saleC, jefemesoneros, servicio);
+    static public Gerente gerente = new Gerente(mesonComida, SEComida, SPComida, SEJefe, entraC, saleC, jefemesoneros, servicio);
     
     
      public static void main(String[] args) {

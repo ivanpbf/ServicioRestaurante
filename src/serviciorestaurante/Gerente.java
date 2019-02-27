@@ -21,7 +21,7 @@ public class Gerente extends Thread{
     private ServicioInterfaz servicio;
     private int ordenesAtendidas;
 
-    public Gerente(int[] mesonComida, Semaphore SEComida, Semaphore SPComida, Semaphore SCComida, Semaphore SEJefe, int entraC, int saleC, JefeMesoneros jefem,ServicioInterfaz servicio) {
+    public Gerente(int[] mesonComida, Semaphore SEComida, Semaphore SPComida, Semaphore SEJefe, int entraC, int saleC, JefeMesoneros jefem,ServicioInterfaz servicio) {
         this.mesonComida = mesonComida;
         this.SEComida = SEComida;
         this.SPComida = SPComida;
@@ -63,12 +63,12 @@ public class Gerente extends Thread{
             }
         }
         ordenesAtendidas = ordenesAtendidas + ordenesActuales;
+        System.out.println(ordenesActuales);
         servicio.getComidas().setText("0");
         setSaleC(0);
         setEntraC(0);
-        SEComida.release(1);
-        
-        SPComida.release(ordenesAtendidas);
+        SEComida.release(1);       
+        SPComida.release(ordenesActuales);
         } catch (InterruptedException ex) {
             Logger.getLogger(Gerente.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -90,24 +90,24 @@ public class Mesonero extends Thread{
                 SEEntrada.acquire(1);
                 tomarEntrada();
                 SEEntrada.release();
-                SPEntrada.release();
+                SPEntrada.release(3);
                 SCPlato.acquire(2);
                 SEPlato.acquire(1);
                 tomarPlatofuerte();
                 SEPlato.release();
-                SPPlato.release();
+                SPPlato.release(2);
                 SCPostre.acquire(1);
                 SEPostre.acquire(1);
                 tomarPostre();
                 SEPostre.release();
-                SPPostre.release();
+                SPPostre.release(1);
                 this.sleep((long)1000*tiempo);
                 //luego viene servir
                 SPComida.acquire(1);
                 SEComida.acquire(1);
                 servir();
                 SEComida.release();
-                SCComida.release();
+                SCComida.release(1);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Mesonero.class.getName()).log(Level.SEVERE, null, ex);
             }

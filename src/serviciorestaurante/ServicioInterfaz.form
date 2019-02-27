@@ -31,6 +31,7 @@
           <Color blue="99" green="ff" red="99" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Contratar"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ContratarEntradaActionPerformed"/>
@@ -47,6 +48,7 @@
           <Color blue="66" green="66" red="ff" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Despedir"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DespedirEntradaActionPerformed"/>
@@ -221,6 +223,7 @@
           <Color blue="99" green="ff" red="99" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Contratar"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ContratarPlatoActionPerformed"/>
@@ -237,6 +240,7 @@
           <Color blue="66" green="66" red="ff" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Despedir"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DespedirPlatoActionPerformed"/>
@@ -306,6 +310,7 @@
           <Color blue="99" green="ff" red="99" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Contratar"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ContratarPostreActionPerformed"/>
@@ -329,6 +334,7 @@
           <Color blue="66" green="66" red="ff" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Depedir"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DespedirPostreActionPerformed"/>
@@ -411,6 +417,7 @@
           <Color blue="99" green="ff" red="99" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Contratar"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ContratarMesoneroActionPerformed"/>
@@ -427,6 +434,7 @@
           <Color blue="66" green="66" red="ff" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Despedir"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DespedirMesoneroActionPerformed"/>

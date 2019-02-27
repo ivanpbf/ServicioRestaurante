@@ -84,6 +84,7 @@ public class ServicioInterfaz extends javax.swing.JFrame {
 
         ContratarEntrada.setBackground(new java.awt.Color(153, 255, 153));
         ContratarEntrada.setText("Contratar");
+        ContratarEntrada.setEnabled(false);
         ContratarEntrada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ContratarEntradaActionPerformed(evt);
@@ -93,6 +94,7 @@ public class ServicioInterfaz extends javax.swing.JFrame {
 
         DespedirEntrada.setBackground(new java.awt.Color(255, 102, 102));
         DespedirEntrada.setText("Despedir");
+        DespedirEntrada.setEnabled(false);
         DespedirEntrada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DespedirEntradaActionPerformed(evt);
@@ -160,6 +162,7 @@ public class ServicioInterfaz extends javax.swing.JFrame {
 
         ContratarPlato.setBackground(new java.awt.Color(153, 255, 153));
         ContratarPlato.setText("Contratar");
+        ContratarPlato.setEnabled(false);
         ContratarPlato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ContratarPlatoActionPerformed(evt);
@@ -169,6 +172,7 @@ public class ServicioInterfaz extends javax.swing.JFrame {
 
         DespedirPlato.setBackground(new java.awt.Color(255, 102, 102));
         DespedirPlato.setText("Despedir");
+        DespedirPlato.setEnabled(false);
         DespedirPlato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DespedirPlatoActionPerformed(evt);
@@ -192,6 +196,7 @@ public class ServicioInterfaz extends javax.swing.JFrame {
 
         ContratarPostre.setBackground(new java.awt.Color(153, 255, 153));
         ContratarPostre.setText("Contratar");
+        ContratarPostre.setEnabled(false);
         ContratarPostre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ContratarPostreActionPerformed(evt);
@@ -202,6 +207,7 @@ public class ServicioInterfaz extends javax.swing.JFrame {
 
         DespedirPostre.setBackground(new java.awt.Color(255, 102, 102));
         DespedirPostre.setText("Depedir");
+        DespedirPostre.setEnabled(false);
         DespedirPostre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DespedirPostreActionPerformed(evt);
@@ -234,6 +240,7 @@ public class ServicioInterfaz extends javax.swing.JFrame {
 
         ContratarMesonero.setBackground(new java.awt.Color(153, 255, 153));
         ContratarMesonero.setText("Contratar");
+        ContratarMesonero.setEnabled(false);
         ContratarMesonero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ContratarMesoneroActionPerformed(evt);
@@ -243,6 +250,7 @@ public class ServicioInterfaz extends javax.swing.JFrame {
 
         DespedirMesonero.setBackground(new java.awt.Color(255, 102, 102));
         DespedirMesonero.setText("Despedir");
+        DespedirMesonero.setEnabled(false);
         DespedirMesonero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DespedirMesoneroActionPerformed(evt);
@@ -392,6 +400,14 @@ public class ServicioInterfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_DespedirPostreActionPerformed
 
     private void IniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IniciarActionPerformed
+        ContratarEntrada.setEnabled(true);
+        ContratarMesonero.setEnabled(true);
+        ContratarPlato.setEnabled(true);
+        ContratarPostre.setEnabled(true);
+        DespedirEntrada.setEnabled(true);
+        DespedirMesonero.setEnabled(true);
+        DespedirPlato.setEnabled(true);
+        DespedirPostre.setEnabled(true);
         for(int i = 0; i < cantInicialEntrada; i++){
             CEntradas[i].start();
         }
