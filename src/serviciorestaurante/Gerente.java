@@ -68,7 +68,6 @@ public class Gerente extends Thread{
         setSaleC(0);
         setEntraC(0);
         SEComida.release(1);       
-        SPComida.release(ordenesActuales);
         } catch (InterruptedException ex) {
             Logger.getLogger(Gerente.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -79,7 +78,7 @@ public class Gerente extends Thread{
             Random r = new Random();
             double random = 0.25 + (0.45 - 0.25) * r.nextDouble();
             this.servicio.getGerente().setText("Descansando");
-            this.sleep((long)(random*1000*ServicioRestaurant.tiempo));
+            this.sleep((long)(random*ServicioRestaurant.tiempo*100));
             this.servicio.getGerente().setText("Revisando");
         } catch (InterruptedException ex) {
             Logger.getLogger(Gerente.class.getName()).log(Level.SEVERE, null, ex);

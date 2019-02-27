@@ -42,7 +42,7 @@ public class JefeMesoneros extends Thread{
     
     public void registrar(){
         try {
-            this.sleep((long)0.05*1000*ServicioRestaurant.tiempo); //pensar
+            this.sleep((long)0.05*100*ServicioRestaurant.tiempo); //pensar
         } catch (InterruptedException ex) {
             Logger.getLogger(JefeMesoneros.class.getName()).log(Level.SEVERE, null, ex);
         }

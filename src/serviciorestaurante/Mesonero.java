@@ -106,7 +106,7 @@ public class Mesonero extends Thread{
                 SPComida.acquire(1);
                 SEComida.acquire(1);
                 servir();
-                SEComida.release();
+                SEComida.release(1);
                 SCComida.release(1);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Mesonero.class.getName()).log(Level.SEVERE, null, ex);
