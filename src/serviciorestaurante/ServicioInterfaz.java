@@ -77,6 +77,8 @@ public class ServicioInterfaz extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         HorasRestantes = new javax.swing.JTextField();
         Iniciar = new javax.swing.JButton();
+        Totales = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
         jLabelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -285,6 +287,11 @@ public class ServicioInterfaz extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Iniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 575, -1, 30));
+        getContentPane().add(Totales, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 450, 70, -1));
+
+        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel16.setText("Totales:");
+        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 420, -1, -1));
 
         jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/restaurant-766050_960_720.jpg"))); // NOI18N
         jLabelFondo.setOpaque(true);
@@ -525,7 +532,15 @@ public class ServicioInterfaz extends javax.swing.JFrame {
     public void setComidas(JTextField Comidas) {
         this.Comidas = Comidas;
     }
-    
+
+    public JTextField getTotales() {
+        return Totales;
+    }
+
+    public void setTotales(JTextField Totales) {
+        this.Totales = Totales;
+    }
+     
     
     
 
@@ -551,6 +566,7 @@ public class ServicioInterfaz extends javax.swing.JFrame {
     private javax.swing.JTextField MesonPostres;
     private javax.swing.JTextField Mesoneros;
     private javax.swing.JButton Salir;
+    private javax.swing.JTextField Totales;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -558,6 +574,7 @@ public class ServicioInterfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

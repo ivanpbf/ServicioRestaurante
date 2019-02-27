@@ -62,8 +62,8 @@ public class Gerente extends Thread{
                 ordenesActuales++;
             }
         }
-        ordenesAtendidas = ordenesAtendidas + ordenesActuales;
-        System.out.println(ordenesActuales);
+        ordenesAtendidas = ordenesAtendidas + (ordenesActuales*Integer.parseInt(servicio.getMesoneros().getText()));
+        servicio.getTotales().setText(Integer.toString(ordenesAtendidas));
         servicio.getComidas().setText("0");
         setSaleC(0);
         setEntraC(0);
