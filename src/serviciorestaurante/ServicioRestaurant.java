@@ -82,18 +82,42 @@ public class ServicioRestaurant { // ojo que esta es la clase principal donde se
         datos = leerArchivoDatos();
          //iniciamos todo
          //ojo que estos son los valores predeterminados, esto cambia si existe archivo de objeto o texto
-        tiempo = datos[0];
-        maxMesonEntradas = datos[1];
-        maxMesonPlatos = datos[2];
-        maxMesonPostres = datos[3];
-        cantInicialEntrada = datos[4];
-        cantInicialPF = datos[5];
-        cantInicialPostres = datos[6];
-        maxCantEntrada = datos[7];
-        maxCantPF = datos[8];
-        maxCantPostre = datos[9];
-        cantInicialMesoneros = datos[10];
-        cantMaxMesoneros = datos[11];
+         boolean nonegativo = true;
+         for (int i = 0; i < datos.length; i++) {
+             if(datos[i] < 0){
+                 System.out.println("Uno de los datos en el archivo de texto es negativo, se usaran los valores predeterminados");
+                 nonegativo = false;
+             }
+         }
+         if (!nonegativo){
+             tiempo = 1;
+             maxMesonEntradas = 20;
+             maxMesonPlatos = 30;
+             maxMesonPostres = 10;
+             cantInicialEntrada = 1;
+             cantInicialPF = 2;
+             cantInicialPostres = 0;
+             maxCantEntrada = 3;
+             maxCantPF = 4;
+             maxCantPostre = 2;
+             cantMaxMesoneros = 6;
+             
+         }
+         else {
+             tiempo = datos[0];
+            maxMesonEntradas = datos[1];
+            maxMesonPlatos = datos[2];
+            maxMesonPostres = datos[3];
+            cantInicialEntrada = datos[4];
+            cantInicialPF = datos[5];
+            cantInicialPostres = datos[6];
+            maxCantEntrada = datos[7];
+            maxCantPF = datos[8];
+            maxCantPostre = datos[9];
+            cantInicialMesoneros = datos[10];
+            cantMaxMesoneros = datos[11];
+         }
+        
         //luego lo demas
         CEntradas = new CEntrada[maxCantEntrada];
         CPlato = new CPlatoFuerte[maxCantPF];

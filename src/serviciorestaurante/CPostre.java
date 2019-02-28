@@ -27,14 +27,15 @@ public class CPostre extends Cocinero{
     
     @Override
     public void run() {
-        while(true){
+        while(ejecutar){
             try {
                 SP.acquire(1);
                 SE.acquire(1);
                     cocinar();
                 SE.release();
                 SC.release();
-                CPostre.sleep((long)(1000*tiempo*taza));
+                CPostre.sleep((long)(tiempo*taza*1000));
+                
             } catch (InterruptedException ex) {
                 Logger.getLogger(CPostre.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -44,7 +45,6 @@ public class CPostre extends Cocinero{
     public void cocinar(){
         mesonPostre[entra]=1; //se cocino 1 y se pone en su meson
         entra = (entra+1)%mesonPostre.length; //10 puestos del meson
-       
         int nuevo = Integer.parseInt(this.servicio.getMesonPostres().getText())+1;
         this.servicio.getMesonPostres().setText(Integer.toString(nuevo));
         
@@ -55,9 +55,9 @@ public class CPostre extends Cocinero{
             for (int i = 0; i<ServicioRestaurant.maxCantPostre;i++){
                 if(CPostres[i] == null && !contratado){
                     CPostres[i] = new CPostre(mesonPostre, SE, SP, SC,tiempo, entra, sale, servicio);
-                    contratado = true;
                     CPostres[i].ejecutar = true;
                     CPostres[i].start();
+                    contratado = true;
                     int nuevo = Integer.parseInt(this.servicio.getCocinerosPostres().getText())+1;
                     this.servicio.getCocinerosPostres().setText(Integer.toString(nuevo));
                 }

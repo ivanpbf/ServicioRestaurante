@@ -126,7 +126,7 @@ public class Mesonero extends Thread{
     public void tomarPlatofuerte(){
         mesonPlato[salePF] = 0;
         mesonPlato[(salePF+1)%ServicioRestaurant.maxCantPF] = 0;
-        saleP = (salePF+2)%ServicioRestaurant.maxCantPF;
+        salePF = (salePF+2)%ServicioRestaurant.maxCantPF;
         int tomar = Integer.parseInt(this.servicio.getMesonPlatos().getText())-2;
         this.servicio.getMesonPlatos().setText(Integer.toString(tomar));
     }

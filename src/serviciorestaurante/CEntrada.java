@@ -42,7 +42,6 @@ public class CEntrada extends Cocinero{
     public void cocinar(){
         mesonEntradas[entra]=1; //se cocino 1 y se pone en su meson
         entra = (entra+1)%mesonEntradas.length; //20 puestos del meson
-        
         int nuevo = Integer.parseInt(this.servicio.getMesonEntradas().getText())+1;
         this.servicio.getMesonEntradas().setText(Integer.toString(nuevo));
     }
